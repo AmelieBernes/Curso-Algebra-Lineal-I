@@ -1,0 +1,129 @@
+\textbf{I )} Construyamos una base de $\IR^{3}$ que contenga al vector $v_{1} = (4, 5, 9)$.
+\begin{itemize}
+	\item Para que $v_{2}$ sea tal que $\{ v_{1}, v_{2} \}$ sea l.i.,
+	debe cumplirse que 
+	\marginnote{Para esta construcción estamos usando el lema
+	\ref{lema: S union x es ld sii x en generado de S}.}
+	\[
+	v_{2} \in \IR^{3} - \langle \{ v_{1} \} \rangle, 
+	\]
+	es decir, que $v_{2}$ no sea múltiplo escalar de $v_{1}$. Pongamos pues
+	a $v_{2} = (5, 3, 7)$.
+	\item Para que $v_{3}$ sea tal que $\{ v_{1}, v_{2}, v_{3} \}$ 
+	sea l.i., se deberá tener 
+	\begin{align*}
+	v_{3} \in \IR^{3} - \langle \{ v_{1}, v_{2} \} \rangle
+	= &
+	\IR^{3} - \{ a(4, 5, 9) + b (5, 3, 7) : \hspace{0.2cm} a, b \in \IR \} \\
+	= & 
+	\IR^{3} - \{ (4a+5b, 5a+3b, 9a+7b)  | \hspace{0.2cm} a, b \in \IR \}.
+	\end{align*}
+	Haciendo $a = 1$, $b = -1$, tenemos que el vector 
+	$(-1, 2, 2)$ es elemento de $\langle \{ v_{1}, v_{2} \}$; cambiando
+	una de las tres entradas obtendremos un vector que no está en este
+	espacio (pues el sistema planteado para expresar a este nuevo vector
+	como combinación lineal de $v_{1}$ y $v_{2}$ no tendría solución,
+	recuerde el teorema de Cramer). Tomemos pues a $v_{3} = (-1, 2, 0)$.
+\end{itemize}
+Obtuvimos así al subconjunto linealmente independiente
+\[
+\beta = 
+\{ v_{1} = (4, 5, 9), v_{2} = (5, 3, 7), v_{3} = (-1, 2, 0) \}
+\]
+de $\IR^{3}$; como este tiene tres elementos y la dimensión de 
+$\IR^{3}$ es $3$, tenemos que es una base de $\IR^{3}$.
+
+\textbf{II)}Encontremos ahora, usando el argumento de la demostración
+del teorema fundamental de las bases
+\ref{teo: propiedad univ de las bases}, una transformación
+lineal $T: \IR^{3} \longrightarrow \IR^{2}$ tal que 
+\begin{equation}
+	\label{eq: condiciones para T ejemplo}
+	T(v_{1}) = (1, 0), \hspace{0.2cm}
+	T(v_{2}) = (2, 5), \hspace{0.2cm}
+	T(v_{3}) = (-3, 1).
+\end{equation}
+Tenemos primero que ver cómo expresar a cualquier vector
+$(x, y, z) \in \IR^{3}$ como combinación lineal de elementos
+de la base $\beta$. Estamos buscando entonces a los únicos
+escalares $a, b, c \in \IR$ tales que 
+\begin{align*}
+(x, y, z) = & a (4, 5, 9) + b (5, 3, 7) + c(-1, 2, 0) \\
+= & (4a+5b-c, 5a+3b+2c, 9a+7b).
+\end{align*}
+Esta igualdad en $\IR^{3}$ es equivalente al sistema de ecuaciones
+que resolvemos a continuación:
+\marginnote{En este argumento, $x$, $y$ y $z$ son las constantes,
+mientras que las incógnitas son los escalares $a$, $b$ y $c$.}
+\begin{align*}
+\left( \begin{array}{rrr|r} 
+4 & 5 & -1 & x  \\ 
+5 & 3 & 2 & y  \\ 
+9 & 7 & 0 & z
+\end{array} \right) \sim &
+\left( \begin{array}{rrr|r} 
+1 & 5/4 & -1/4 & x/4  \\ 
+5 & 3 & 2 & y  \\ 
+9 & 7 & 0 & z
+\end{array} \right) \sim &
+\left( \begin{array}{rrr|r} 
+1 & 5/4 & -1/4 & x/4  \\ 
+0 & -13/4 & 13/4 & y - 5x/4  \\ 
+0 & -17/4 & 9/4 & z-9x/4
+\end{array} \right) 
+\end{align*}
+\begin{align*}
+\sim
+\left( \begin{array}{rrr|r} 
+1 & 5/4 & -1/4 & x/4  \\ 
+0 & 1 & -1 & -4y/13 + 5x/13  \\ 
+0 & -17 & 9 & 4z-9x
+\end{array} \right) \sim &
+\left( \begin{array}{rrr|r} 
+1 & 5/4 & -1/4 & x/4  \\ 
+0 & 1 & -1 & -4y/13 + 5x/13  \\ 
+0 & 0 & 8 & -4z+68y/13 - 32x/13
+\end{array} \right) .
+\end{align*}
+Tenemos entonces que
+\marginnote{\hlgray{Ejercicio:} sustituyendo algunos valores
+para $x$, $y$ y $z$ compruebe que las fórmulas
+\eqref{eq: ejemplo c}, \eqref{eq: ejemplo b} y
+\eqref{eq: ejemplo a} son correctas.}
+\begin{equation}
+	\label{eq: ejemplo c}
+	c = -\frac{1}{8} \left( 4z - \frac{68}{13} y
+- \frac{32}{13} x \right) = 
+\frac{4}{13} x + \frac{17}{26} y - \frac{1}{2} z,
+\end{equation}
+\begin{equation}
+	\label{eq: ejemplo b}
+	b = c - \frac{4}{13} y + \frac{5}{13} x =
+\frac{9}{13} x + \frac{9}{26} y - \frac{1}{2} z,
+\end{equation}
+y
+\begin{equation}
+	\label{eq: ejemplo a}
+	a = \frac{1}{4} \left( x+c-5b \right)
+= -\frac{7}{13} x - \frac{7}{26} y + \frac{1}{2} z.
+\end{equation}
+Usando estas tres expresiones, tenemos que
+la única transformación que extiende la definición 
+\eqref{eq: condiciones para T ejemplo}
+en la base $\beta$ es
+\marginnote{\hlgray{Ejercicio:} compruebe que la transformación
+lineal propuesta cumple las condiciones 
+\eqref{eq: condiciones para T ejemplo}.}
+\begin{align*}
+T(x, y, z) = & 
+T \left( a v_{1} + bv_{2} + cv_{3} \right) \\
+= & a T(v_{1}) + b T(v_{2}) + c T(v_{3}) \\
+= & \left( -\frac{7}{13} x - \frac{7}{26} y + \frac{1}{2} z \right)
+(1, 0) + 
+\left( \frac{9}{13} x + \frac{9}{26} y - \frac{1}{2} z \right)
+(2, 5) + 
+\left( \frac{4}{13} x + \frac{17}{26} y - \frac{1}{2} z \right)
+(-3, 1) \\
+= & \left( -\frac{1}{13} x - \frac{20}{13} y + z,
+\frac{49}{13}x + \frac{31}{13} y - 3z \right).
+\end{align*}

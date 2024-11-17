@@ -1,0 +1,143 @@
+\documentclass[10pt]{extreport}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+%\input{paquetes}
+
+% ----------------------- Packages --------------------------
+
+\usepackage[utf8]{inputenc}
+
+				
+\usepackage{babel}
+%\decimalpoint
+\usepackage{mathtools}% http://ctan.org/pkg/mathtool
+\usepackage{amsthm, amsmath, bm, amssymb} %math packages
+\usepackage{ wasysym, stmaryrd } %Para rayo de contradicción
+\usepackage{lineno}
+
+\usepackage{halloweenmath}
+\usepackage{MnSymbol}
+
+\usepackage{tikz}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt   
+\usepackage{imakeidx}
+\makeindex
+
+ 
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+
+% --------------- highlight -----------------------------
+
+\usepackage{soul}
+\usepackage{hyperref}
+
+
+\newcommand{\hlpink}[1]{{\sethlcolor{lime}\hl{#1}}}
+\newcommand{\hlgray}[1]{{\sethlcolor{lightgray}\hl{#1}}}
+\newcommand{\hllilac}[1]{{\sethlcolor{Orchid}\hl{#1}}}
+
+% ---------------------------------------------------------
+
+\usepackage{subcaption, threeparttable}
+\usepackage{graphicx} 
+\graphicspath{{./imagenes}}
+\DeclareCaptionFormat{custom}
+{
+    \textbf{#1#2}\textit{\small #3}
+}
+\captionsetup{format=custom}
+\usepackage[font=small,labelfont=bf]{caption} %para que los nombres 'Figura x' estén en negritas.
+
+%Para rotar imágenes:
+\usepackage{wrapfig}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{epstopdf}
+
+\usepackage{marginfix}
+\usepackage{marginnote}
+\renewcommand*{\marginfont}{\footnotesize} %Para cambiar el tamaño de fuente de las marginnote: https://tex.stackexchange.com/questions/30473/specifying-font-size-in-a-newcommand
+
+
+
+%Paquetes usados en estilo.tex
+\usepackage{geometry}
+\usepackage{sidenotes} 
+\usepackage[font=footnotesize,format=plain,labelfont={bf,sf},textfont={it},width=10pt]{caption}
+% Captions at the side of the page
+%\usepackage[wide]{sidecap}
+\usepackage{morefloats}
+
+\usepackage{subfiles} % Best loaded last in the preamble
+
+
+% ----------------------------------------------------------------------- QUOTES
+\usepackage{csquotes}
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+        \hbox{}\nobreak\hfil(#1)% <-- edit this to change the looks of the author to e.g. "...\hfil - #1%" to get a similar output as in Skillmon's example (also, the %-sign needs to be there!)
+        \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{signquote}[1]
+{\savebox\mybox{#1}\begin{quote}}
+    {\signed{\usebox\mybox}\end{quote}}
+% -------------------------------------------------------------------
+
+
+
+\usepackage{float}
+
+\newcommand*{\IR}{\mathbb{R}}
+\newcommand*{\IC}{\mathbb{C}}
+\newcommand*{\IN}{\mathbb{N}}
+\newcommand*{\IZ}{\mathbb{Z}}
+\newcommand*{\IT}{\mathbb{T}}
+\newcommand*{\QEDB}{\null\nobreak\hfill\ensuremath{\square}}%
+\newcommand*{\diam}{\null\nobreak\hfill\ensuremath{\diamond}}%
+
+\newcommand{\TODO}[1]{\textcolor{violet}{#1}} % TODO quitar. Sólo lo uso mientras estoy editando para resaltar en morado.
+
+%Ambientes de teorema antiguos. TODO quitar esto.
+			\newtheorem{teo}{Teorema}[section]
+			%Pongo a todas el contador de 'teo'
+			\newtheorem{lema}[teo]{Lema}
+			\newtheorem{prop}[teo]{Proposición}
+			\newtheorem{obs}[teo]{Observación}
+			\newtheorem{cor}[teo]{Corolario}
+			\newtheorem{defi}[teo]{Definición}
+			\newtheorem{notacion}[teo]{Notación}
+			\newtheorem{ejem}[teo]{Ejemplo}
+			\newtheorem{ej}{Ejercicio}
+
+\input{estilo}
+\usepackage{tcolorbox}
+\tcbuselibrary{listingsutf8}
+
+% Definir cuadro de ancho del texto
+\NewTColorBox{boxProblem}{O{sidebyside=false, lower separated = true} m D(){#2}}{
+  colback=purple!5!white,
+  colframe=violet,
+  colupper=violet!50!black,
+  fontupper=\bfseries,
+  fonttitle=\bfseries,
+  label = {problem #3},
+  title={#2},
+  #1
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\tableofcontents
+
+\input{espaciosVectoriales}
+\input{ejercicios1}
+\input{li_ld}
+\input{ejercicios2}
+\input{transfLin}
+\input{ejercicios3}
+\input{reprMatriciales}
+\newpage
+\input{ejer4}
+\end{document}
+
