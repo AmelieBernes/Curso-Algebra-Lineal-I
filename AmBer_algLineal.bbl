@@ -1,0 +1,209 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{anyt/global//global/global/global}
+  \entry{ladr}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=AS}{%
+         family={Axler},
+         familyi={A\bibinitperiod},
+         given={Sheldon},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AS1}
+    \strng{fullhash}{AS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Axl}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{edition}{fourth edition}
+    \field{title}{Linear Algebra Done Right}
+  \endentry
+
+  \entry{Brown}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=BWC}{%
+         family={Brown},
+         familyi={B\bibinitperiod},
+         given={William\bibnamedelima C.},
+         giveni={W\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {John Wiley}%
+      {Sons}%
+    }
+    \strng{namehash}{BWC1}
+    \strng{fullhash}{BWC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Bro}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{title}{A second course in linear algebra}
+  \endentry
+
+  \entry{Friedb}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=FSHSLEIAJ}{%
+         family={Friedberg S.\bibnamedelima H.},
+         familyi={F\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim
+  H\bibinitperiod},
+         suffix={Insel A.\bibnamedelima J.},
+         suffixi={I\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+         given={Spence L.\bibnamedelima E.},
+         giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim
+  E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Prentice Hall}%
+    }
+    \strng{namehash}{FSHIAJSLE1}
+    \strng{fullhash}{FSHIAJSLE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{FSH03}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{edition}{fourth edition}
+    \field{title}{Linear Algebra}
+    \field{year}{2003}
+  \endentry
+
+  \entry{Godement}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=GR}{%
+         family={Godement},
+         familyi={G\bibinitperiod},
+         given={Roger},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Hermann éditeurs}%
+    }
+    \strng{namehash}{GR1}
+    \strng{fullhash}{GR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{God}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{title}{Cours d'algèbre}
+  \endentry
+
+  \entry{Golan}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=GJS}{%
+         family={Golan},
+         familyi={G\bibinitperiod},
+         given={Jonathan\bibnamedelima S.},
+         giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Kluwer Academic Publishers}%
+    }
+    \strng{namehash}{GJS1}
+    \strng{fullhash}{GJS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Gol}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{title}{Foundations of Linear Algebra}
+  \endentry
+
+  \entry{Jacobson}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=JN}{%
+         family={Jacobson},
+         familyi={J\bibinitperiod},
+         given={Nathan},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {W.H. Freeman}%
+      {Company}%
+    }
+    \strng{namehash}{JN1}
+    \strng{fullhash}{JN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Jac85}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{edition}{second edition}
+    \field{title}{Basic Algebra I}
+    \field{year}{1985}
+  \endentry
+
+  \entry{Hugo}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=MHAR}{%
+         family={Mejía},
+         familyi={M\bibinitperiod},
+         given={Hugo Alberto\bibnamedelima Rincón},
+         giveni={H\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim
+  R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Las prensas de ciencias}%
+    }
+    \strng{namehash}{MHAR1}
+    \strng{fullhash}{MHAR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Mej11}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{Álgebra Lineal}
+    \field{year}{2011}
+  \endentry
+
+  \entry{Rotman}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=RJJ}{%
+         family={Rotman},
+         familyi={R\bibinitperiod},
+         given={Joseph\bibnamedelima J.},
+         giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {American Mathematical Society}%
+    }
+    \strng{namehash}{RJJ1}
+    \strng{fullhash}{RJJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Rot15}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{series}{Graduate Texts in Mathematics}
+    \field{title}{Advanced Modern Algebra}
+    \field{year}{2015}
+  \endentry
+\enddatalist
+\endinput

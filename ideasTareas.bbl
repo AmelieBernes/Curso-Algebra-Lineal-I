@@ -1,0 +1,56 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{anyt/global//global/global}
+  \entry{rank}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Ran}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+  \field{howpublished}{\url{https://en.wikipedia.org/wiki/Rank_(linear_algebra)}}
+    \field{note}{Consultado en: 2025 - 01 -28}
+    \field{title}{Rank (Linear Algebra)}
+  \endentry
+
+  \entry{highDimDA}{book}{}
+    \name{author}{1}{}{%
+      {{hash=WJMY}{%
+         family={Wright\bibnamedelima John},
+         familyi={W\bibinitperiod\bibinitdelim J\bibinitperiod},
+         given={Ma\bibnamedelima Yi},
+         giveni={M\bibinitperiod\bibinitdelim Y\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{WJMY1}
+    \strng{fullhash}{WJMY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{WJ90}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{edition}{2nd edition}
+    \field{series}{Graduate Texts in Mathematics}
+    \field{title}{High-Dimensional Data Analysis with Low-Dimensional Models:
+  Principles, Computation, and Applications}
+    \field{year}{1990}
+  \endentry
+\enddatalist
+\endinput

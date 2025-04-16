@@ -1,0 +1,21 @@
+\babel@toc {nil}{}\relax 
+\contentsline {chapter}{\numberline {1}Información general del curso}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Forma de evaluación}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Bibliografía}{4}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Espacios vectoriales}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Algunas estructuras algebráicas}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Definición de espacio vectorial}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Espacios vectoriales de funciones}{7}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Espacio de funciones de soporte finito $F^{(X)}$}{9}{subsection.2.3.1}%
+\contentsline {section}{\numberline {2.4}El subespacio generado por un subconjunto y suma de subespacios}{10}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Suma directa de subespacios}{14}{subsection.2.4.1}%
+\contentsline {section}{\numberline {2.5}Caso práctico: Representación de información nutricional}{15}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Transformaciones lineales}{18}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Transformaciones lineales}{19}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Ejemplos de transformaciones lineales}{19}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}El teorema fundamental de las transformaciones lineales}{21}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}No ejemplos de transformaciones lineales}{23}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}Inyectividad y suprayectividad de transformaciones lineales}{24}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Isomorfismos}{26}{section.3.4}%
+\contentsline {section}{\numberline {3.5}La propiedad universal de las bases}{28}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Caracterización de transformaciones lineales de $\mathbb {R}^{n}$ en $\mathbb {R}^{m}$}{30}{section.3.6}%

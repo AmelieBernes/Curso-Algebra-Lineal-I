@@ -65,29 +65,31 @@ $a_{1} x_{1} + \cdots + a_{n} x_{n} = \hat{0}$, entonces todos
 los escalares $a_{i}$ son iguales a cero.
 
 
+
 \begin{prop}
 	\label{prop: ld equiv fried y hugo}
 \marginnote{El enunciado dado en la proposición 
 \ref{prop: ld equiv fried y hugo} es
-la definición de dependencia lineal manejada por Hugo Rincón (REF).}
+la definición de dependencia lineal manejada en 
+\cite{Hugo}.}
 $S \subseteq V$ es linealmente dependiente si y sólo si 
-existe $x \in S$ tal que $x \in \langle S - \{ x \} \rangle$.
+existe $x \in S$ tal que $x \in span (S - \{ x \})$.
 \end{prop}
 \noindent
 \textbf{Demostración.}
 \begin{itemize}
 	\item[$\Rightarrow$]] Sean $x_{1},\ldots , x_{n} \in S$
-	distintos entre sí y $a_{1}, \ldots , a_{n}$ escalares no cero 
+	distintos entre sí y $a_{1}, \ldots , a_{n}$ escalares no todos cero 
 	tales que $\sum_{i=1}^{n} a_{i}x_{i} = \hat{0}$.
 	Sin pérdida de generalidad, supongamos que 
 	$a_{1} \neq 0$. Entonces,
 	\[
 	a_{1}x_{1} = - \sum_{i=2}^{n} a_{i}x_{i} \in 
-	\langle S - \{ x_{1} \} \rangle,
+	span(S - \{ x_{1} \} ),
 	\]
-	luego, $x_{1} \in \langle S -\{ x_{1} \} \rangle$.
+	luego, $x_{1} \in span(S - \{ x_{1} \} )$.
 	\item[$\Leftarrow$]] Sea $x \in S$ tal que 
-	$x \in \langle S - \{ x \} \rangle$. Sean pues
+	$x \in span (S - \{ x \})$. Sean pues
 	$x_{1}, \ldots ,x_{n} \in S - \{ x \}$ distintos
 	entre si 
 	tales que $x = \sum_{i = 1}^{n} a_{i}x_{i}$. Restando $x$
@@ -111,11 +113,11 @@ si y sólo si $x \neq \hat{0}$.
 \end{prop}
 \noindent
 \textbf{Demostración.}
-En efecto, según la proposición
+En efecto, según la Proposición
 \ref{prop: ld equiv fried y hugo},
 $\{ x \}$ es linealmente dependiente si y sólo si 
-$x \in \langle \{ x \} - \{ x \} \rangle = 
-\langle \emptyset \rangle = \{ 0 \}$, 
+$x \in span (\{ x \} - \{ x \} ) = 
+span(\emptyset)= \{ 0 \}$, 
 o sea, si y sólo si $x$ es el vector cero.
 \QEDB
 \vspace{0.2cm}
@@ -123,32 +125,32 @@ o sea, si y sólo si $x$ es el vector cero.
 
 \begin{prop}
 $S \subseteq V$ es linealmente dependiente si y sólo si 
-existe $x \in S$ tal que $\langle S \rangle = 
-\langle S - \{ x \} \rangle$.
+existe $x \in S$ tal que $span(S) = 
+span(S - \{ x \})$.
 \end{prop}
 \noindent
 \textbf{Demostración.}
-Usaremos la equivalencia probada en la proposición
+Usaremos la equivalencia probada en la Proposición
 \ref{prop: ld equiv fried y hugo}.
 \begin{itemize}
 	\item[$\Rightarrow$]] Sea $x \in S$ tal que 
-	$x \in \langle S - \{ x \} \rangle$.
+	$x \in span(S - \{ x \})$.
 	 Como $S - \{ x \}$ está contenido 
-	en $S$, trivialmente $\langle S - \{ x \} \rangle$
-	está contenido en $\langle S \rangle$. 
+	en $S$, trivialmente $span(S - \{ x \})$
+	está contenido en $span(S)$. 
 	La otra contención se 
 	da también pues, por poder $x$ expresarse como combinación lineal 
 	de elementos de $S - \{ x \}$, en cualquier combinación lineal
 	de elementos de $S$ se puede reemplazar a $x$ con múltiplos
 	escalares de $S-\{ x \}$, es decir, todo elemento
-	de $\langle S \rangle$ es elemento de 
-	$\langle S - \{ x \} \rangle$.
+	de $span(S)$ es elemento de 
+	$span(S - \{ x \})$.
 	\item[$\Leftarrow$]]  Si existe $x \in S$
-	tal que $\langle S \rangle = 
-	\langle S - \{ x \} \rangle$, entonces
+	tal que $span(S) = 
+	span(S - \{ x \})$, entonces
 	\[
-	x \in S \subseteq \langle S \rangle = 
-	\langle S - \{ x \} \rangle.
+	x \in S \subseteq span(S) = 
+	span(S - \{ x \}).
 	\]
 	
 \end{itemize}
@@ -374,6 +376,7 @@ una \textbf{base} del espacio.
 \end{ejem}
 
 
+El siguiente Teorema aclara la importancia del concepto de base.
 \begin{teo}
 	\label{teo: equiv de base}
 Sea $V$ un $F-$espacio vectorial distinto de $\{ 0 \}$.
@@ -392,7 +395,8 @@ vectoriales.}
 Antes de comenzar, recuerde que, según la proposición
 \ref{prop: caract elementos del subesp generado por X},
 \[
-\langle \mathcal{B} \rangle = 
+span(\mathcal{B})
+= 
 \left\{ \sum_{i=1}^{n} a_{i}v_{i} | \hspace{0.2cm} 
 n \in \IN, v_{i} \in \mathcal{B}, 
 a_{i} \in F \hspace{0.2cm} \textit{ para toda }
@@ -405,7 +409,7 @@ $S$ significa que cualesquiera dos combinaciones
 lineales de $S$ iguales a $x$ tendrán los mismos coeficientes.
 \begin{itemize}
 	\item[$\Rightarrow$)] Supongamos que $\mathcal{B}$ es base de $V$.
-	Sea $\hat{x} \in V$. Puesto que $V = \langle \mathcal{B} \rangle$,
+	Sea $\hat{x} \in V$. Puesto que $V = span(\mathcal{B})$,
 	sabemos que $\hat{x}$ es combinación lineal 
 	finita de elementos de $\mathcal{B}$.
 	
@@ -504,11 +508,51 @@ respectivamente
 	\includegraphics[scale = 3]{4} 
 \end{figure}	
 
+\section{Cómo construir bases de un espacio vectorial}
+
+Si $S \subseteq V$ es un subconjunto de un $F-$espacio vectorial $V$,
+\begin{itemize}
+	\item si  
+	$S$ es linealmente independiente, la única forma en la que no
+	puede ser base es si el span de $S$ es un subespacio propio de $V$.
+	Esto significa que, formando combinaciones lineales con los elementos de $S$
+	no podemos construir todo el espacio:
+	\[
+	\exists v \in V - span(S).
+	\]
+	Este problema puede intentar arreglarse (cuando se pueda) agregando
+	vectores del espacio que hagan falta para generarlo, pero 
+	¡sin arruinar la independencia lineal!
+	\item Si $S$ es generador, la única forma en la que no puede ser base es si
+	es linealmente dependiente, es decir, si hay redundancia en $S$
+	(c.f. Proposición \ref{prop: ld equiv fried y hugo}), es decir, 
+	si
+	\begin{equation}
+		\label{eq: exists v in span s menos v}
+		\exists v \in S: v \in span(S-\{ v \}). 
+	\end{equation}
+	Recuerda que esto significa que el elemento $v$ de $S$ en realidad
+	no es necesario para construir a todos las combinaciones lineales
+	de elementos de $S$. Podríamos intentar arreglar esto quitando a los
+	elementos de $S$ que pueden ser sustituidos con otros, en el sentido
+	de la ecuación 
+	\eqref{eq: exists v in span s menos v}.
+\end{itemize}
+
+Si partimos de un subconjunto l.i. del espacio, demos un criterio
+necesario y suficiente para 
+extenderlo (i.e. agregar más vectores del espacio) sin alterar 
+la independencia lineal.
+
 \begin{lema}
 	\label{lema: S union x es ld sii x en generado de S}
 Sean $S$ un subconjunto l.i. de $V$, $x \in V - S$.
-Entonces, $S \cup \{ x \}$ es linealmente dependiente si y sólo
-si $x \in \langle S \rangle$.
+Entonces, 
+son equivalentes
+\begin{itemize}
+	\item $S \cup \{ x \}$ es linealmente dependiente,
+	\item $x \in span(S)$.
+\end{itemize}
 \end{lema}
 \noindent
 \textbf{Demostración.}
@@ -526,7 +570,7 @@ si $x \in \langle S \rangle$.
 	Si $a_{n}$ fuese distinto de cero, despejando tendríamos que
 	\[
 	x = -\frac{a_{1}}{a_{n}}x_{1} + \cdots + -\frac{a_{n-1}}{a_{n}}x_{n-1}
-	\in \langle S \rangle \hspace{0.5cm} \lightning
+	\in span(S) \hspace{0.5cm} \lightning
 	\]
 	Así, $a_{n} = 0$. Luego,
 	\[
@@ -536,43 +580,116 @@ si $x \in \langle S \rangle$.
 	de todos los coeficientes.
 	\item[$\Leftarrow$)] Puesto que
 	\[
-	x \in \langle S \rangle = \langle (S \cup \{ x \}) - \{ x \} \rangle,
+	x \in span(S) = span( (S \cup \{ x \}) - \{ x \}),
 	\]
-	según la proposición \ref{prop: ld equiv fried y hugo},
+	según la Proposición \ref{prop: ld equiv fried y hugo},
 	$S \cup \{ x \}$ es l.d..
 \end{itemize}
 
 \QEDB
 \vspace{0.2cm}
 
+\begin{defi}
+	Sea $S$ un subconjunto del $F-$espacio vectorial $V$. Decimos que
+	$S$ es \textbf{linealmente independiente maximal} si
+	para todo $x \in V - S$, $S \cup {x}$ es l.d..
+\end{defi}
+Según el Lema 
+\ref{lema: S union x es ld sii x en generado de S}, $S$ es l.i. maximal
+si todo elemento de $V-S$ está en el generado de $S$. Puesto que, trivialmente
+$S \subseteq span(S)$, tenemos que el ser l.i. maximal implica ser base del 
+espacio. Recíprocamente, si $S$ es base de $V$, en particular es l.i., además,
+si $x \in V-S$, entonces $x \in V = span(S)$, luego, según el lema
+\ref{lema: S union x es ld sii x en generado de S}, 
+$S \cup \{x\}$ es l.d., luego, $S$ es l.i. maximal.
+Con esto probamos que 
+\begin{obs}
+	Los conceptos de base y subconjunto linealmente independiente maximal
+	coinciden.
+\end{obs}
+
+El nombre ``l.i. maximal'' puede ser más ilustrativo que el 
+término ``base'', pues da a entender que una base es un l.i. al que
+no se le puede agregar otro vector del espacio sin arruinar la independencia lineal.
+
 \begin{teo}
 	\label{teo: extrayendo bases de generadores finitos}
 \marginnote{El teorema consiste en extrar bases de conjuntos
 generadores finitos.} Si un espacio vectorial $V$ es generado
-por un conjunto finito $S_{0}$, entonces un subconjunto de $S_{0}$
+por un conjunto finito $S$, entonces un subconjunto de $S$
 es base para $V$.
 \end{teo}
 \noindent
 \textbf{Demostración.}
-Si $S_{0} = \emptyset, \{ 0 \}$, entonces $V = \{ 0 \}$, y en ambos
-casos puede extrarse del conjunto generador $S_{0}$ al vacío,
+Si $S= \emptyset, \{ 0 \}$, entonces $V = \{ 0 \}$, y en ambos
+casos puede extrarse del conjunto generador $S$ al vacío,
 que es una base del espacio.
 
-Supongamos ahora que $V \neq \{ 0 \}$ o, equivalentemente, que
-$S_{0}$ contiene al menos un vector no cero $x_{1}$. Según el ejercicio
-REF, $\{ x_{1} \}$ es linealmente independiente. Continue
-escogiendo vectores $x_{2}, \ldots , x_{n} \in S_{0}$
-tales que $S = \{ x_{1}, \ldots , x_{n} \}$ sigue siendo 
-linealmente independiente y 
-\begin{equation}
-	\label{eq: 0, 28 ag}
-	x \in S_{0} - S \Rightarrow S \cup \{ x \}
-	\hspace{0.2cm} \textit{ es l.d.. }
-\end{equation}
-Según el lema 
-\ref{lema: S union x es ld sii x en generado de S}, 
-esto puede hacerse escogiendo
-$x_{i} \in (V - \langle \{ x_{1}, \ldots , x_{i-1} \}) \cap S_{0}$.
+Supongamos ahora que existe $x_{1} \in S - \{ 0\}$.
+El singulete 
+$\{ x_{1} \}$ es entonces un subconjunto l.i. de $S$
+(c.f. Proposición 
+\ref{prop: singulete x l.i. sii x no cero}).
+\begin{itemize}
+	\item Si  
+	\[
+	\forall z \in S - \{x_{1}\}: \hspace{0.2cm}
+	z \in span(\{x_{1}\}),
+	\]
+	entonces tendremos que $S \subseteq span(\{x_{1}\})$ - pues trivialmente
+	$x_{1} \in span(\{x_{1}\}$, luego, 
+	\[
+	V = span(S) \leq span(span(\{x_{1}\}) = span(\{x_{1}\} \leq V,
+	\]
+	por lo tanto, 
+	\[
+	span(\{x_{1}\} = v,
+	\]
+	y entonces $\{ x_{1}\} \subseteq S$ es un l.i. que genera al espacio, 
+	i.e. una base de este.
+	\item Supongamos que ocurre lo contrario, es decir, que 
+	\[
+	\exists x_{2} \in S-\{x_{1}\} : \hspace{0.2cm}
+	x_{2} \not\in span(\{x_{1}\}).
+	\]
+	Entonces, según el Lema 
+	\ref{lema: S union x es ld sii x en generado de S}, 
+	$\{ x_{1}, x_{2}\} \subseteq S$ es l.i..
+\end{itemize}
+en este último caso, podemos seguir el argumento de antes, y preguntarnos
+si existe algún $z \in S - \{ x_{1}, x_{2} \}$ tal que 
+$z \not\in span(\{x_{1}, x_{2}\})$:
+\begin{itemize}
+	\item si la respuesta a esta pregunta es ``no'', entonces tendremos,
+	como antes, que $S \subseteq(\{ x_{1}, x_{2} \})$, de donde, formando
+	el span a ambos lados de la contención, se seguirá que el l.i.
+	$\{x_{1}, x_{2}\}$ genera a $V$, luego, es base de $V$;
+	\item si, por el contrario, la respuesta es ``sí'', por el Lema 
+	\ref{lema: S union x es ld sii x en generado de S} podemos agregar este
+	elemento al l.i. $\{x_{1}, x_{2}\}$ sin alterar la independencia lineal.
+\end{itemize}
+
+
+\begin{figure}[H]
+	\sidecaption{
+		Tengo que responder una cantidad finita de preguntas para saber
+		si puedo seguir extendiendo a mi subconjunto l.i. de $S$.
+	}
+	\centering
+	\includegraphics[scale = 2]{29} 
+\end{figure}	
+
+Siguiendo este proceso, debemos conseguir un subconjunto l.i.
+$\{x_{1}, \ldots , x_{n}\}$ de $S$ con la propiedad 
+\[
+\forall z \in S - \{x_{1}, \ldots , x_{n}\} : \hspace{0.2cm}
+z \in span(\{x_{1}, \ldots , x_{n}\});
+\]
+pues el conjunto generador $S$ del que partimos es \textbf{finito}
+(luego, para llegar a tal l.i. hay que responder una cantidad finita de preguntas,
+el proceso no se extiende sin límite).
+Con el argumento de antes se seguirá que tal l.i. es una base del espacio.
+
 \begin{figure}[H]
 	\sidecaption{
 	Figura que ilustra el proceso para la colección de cuatro
@@ -582,22 +699,6 @@ $x_{i} \in (V - \langle \{ x_{1}, \ldots , x_{i-1} \}) \cap S_{0}$.
 	\centering
 	\includegraphics[scale = 2.8]{5} 
 \end{figure}	
-Como $S$ es finito, este proceso en efecto debe acabar,
-es decir, no podemos ampliar indefinidamente a nuestro subconjunto
-l.i. de $S_{0}$.
-
-Aformamos que el l.i. $S$ es base del espacio $V$. Para demostrar esto,
-bastará ver que $S_{0} \subseteq \langle S \rangle$
-pues, en ese caso,
-\[
-V = \langle S_{0} \rangle \leq \langle \langle S \rangle \rangle
-= \langle S \rangle \leq V. 
-\]
-Sea pues $x \in S_{0}$. Si $x \in S$, claramente 
-$x \in \langle S \rangle$. En caso contrario, según 
-\ref{eq: 0, 28 ag}, $S \cup \{ x \}$ es l.d., luego,
-por el lema \ref{lema: S union x es ld sii x en generado de S},
-$x \in \langle S \rangle$.
 \QEDB
 \vspace{0.2cm}
 
@@ -606,7 +707,7 @@ Si un espacio vectorial tiene un subconjunto finito que lo genera,
 entonces tiene base (finita).
 \end{cor}
 
-La ventaja de la demostración del teorema
+La ventaja de la demostración del Teorema
 \ref{teo: extrayendo bases de generadores finitos}
 es que es \textit{constructiva}, es decir, no sólo
 muestra la existencia de tales bases, sino que explica
@@ -641,7 +742,7 @@ Vamos a proceder por inducción sobre $m \leq n$.
 \begin{itemize}
 \item \textit{Base de inducción:} si $m = 0$, o sea, si $S = \emptyset$,
 entonces $S_{1} = \beta$ funciona.
-\item \textit{Paso inductivo:} supongamos el teorema cierto para 
+\item \textit{Paso inductivo:} supongamos el Teorema cierto para 
 $m < n$ y demostremos que el teorema también se cumple para
 $m+1$. Sea pues $S = \{ y_{1}, \ldots , y_{m}, y_{m+1} \}$
 un subconjunto l.i. de $m+1$ elementos. 
@@ -653,8 +754,8 @@ hipótesis de inducción existe
 $\{ x_{1}, \ldots , x_{n-m} \} \subseteq \beta$ tal que 
 \begin{equation}
 	\label{eq: 0 29 Ag 24}
-	\langle \{ y_{1}, \ldots , x_{m} \} \cup
-	\{ x_{1}, \ldots , x_{n-m} \} \rangle = V.
+	 span(\{ y_{1}, \ldots , x_{m} \} \cup
+	 \{ x_{1}, \ldots , x_{n-m} \}) = V.
 \end{equation}
 Existen pues escalares $a_{i}, b_{j} \in F$
 tales que
@@ -668,8 +769,8 @@ algún $b_{j}$ debe no ser cero; sin pérdida de generalidad,
 digamos que $b_{1} \neq 0$. Entonces, podemos despejar a 
 $x_{1}$ de la ecuación anterior y llegar a que 
 \[
-x_{1} \in \langle \{ y_{1}, \ldots , y_{m+1} \} \cup
-\{ x_{2}, \ldots , x_{n-m} \} \rangle;
+x_{1} \in span(\{ y_{1}, \ldots , y_{m} y_{m+1} \} \cup
+\{ x_{2}, \ldots , x_{n-m} \});
 \]
 de esto se sigue que 
 \begin{marginfigure}
@@ -678,19 +779,34 @@ de esto se sigue que
 \[
 \{ y_{1}, \ldots , y_{m}, x_{1}, x_{2}, \ldots , x_{n-m} \}
 \subseteq 
-\langle
+span(
+\{
 y_{1}, \ldots , y_{m}, y_{m+1}, x_{2}, \ldots, x_{n-m}
-\rangle.
+\}
+)
+.
 \]
-Tomando generados a ambos lados de la igualdad y usando 
+Formando el span a ambos lados de la contención y usando 
 \eqref{eq: 0 29 Ag 24}, llegamos a que 
+
+\begin{align*}
+	V = & span(\{ y_{1}, \ldots , y_{m}, x_{1}, x_{2}, \ldots , x_{n-m} \}) \\
+	\subseteq & 
+	span(
+	\{
+	y_{1}, \ldots , y_{m}, y_{m+1}, x_{2}, \ldots, x_{n-m}
+	\}
+	),
+\end{align*}
+luego, 
 el subconjunto $\{x_{2}, \ldots , x_{n-m} \}$ de
 $n-(m+1)$ elementos de $\beta$ es tal que 
 \[
-\langle
+span(
 \{ y_{1}, \ldots , y_{m+1} \} \cup
 \{ x_{2}, \ldots , x_{n-m} \}
-\rangle = V.
+)
+ = V.
 \]
 \end{itemize}
 \QEDB
@@ -704,7 +820,7 @@ l.i. de $V$ con $n$ elemenos es base de $V$.
 \end{cor}
 \noindent
 \textbf{Demostración.}
-Según el teorema 
+Según el Teorema 
 \ref{teo: un li se completa a generador mediante una base},
 si $S$ es un tal subconjunto l.i., entonces existe $S_{1} \subseteq \beta$
 tal que $S \cup S_{1}$ genera a $V$ y $S_{1}$ tiene
@@ -721,7 +837,7 @@ $\{ (1, 0, 0), (0, 1, 0), (0, 0, 1) \}$ como base. Sean
 los vectores 
 $x_{1} = (1, -3, 2)$,
 $x_{2} = (4, 1, 0)$ y $x_{3} = (0, 2, -1)$. Es fácil ver que
-estos son linealmente independientes. Según el corolario
+estos son linealmente independientes. Según el Corolario
 \ref{cor: li con n element es base}, esto implica que
 ellos conforman una base para $\IR^{3}$.
 \end{ejem}
@@ -741,9 +857,9 @@ Sea $S \subseteq V$ con $|S| > n$. Supongamos que $S$ es l.i..
 Si $S_{1}$ es un subconjunto de $S$ con al menos $n$ elementos, 
 entonces al igual que $S$ es l.i., luego, por el corolario 
 \ref{cor: li con n element es base} es una base del espacio,
-entonces,  $\langle S_{1} \rangle = V$.
-Si $x \in S - S_{1}$, como $x \in V = \langle S_{1} \rangle$,
-por el lema 
+entonces,  $span(S_{1}) = V$.
+Si $x \in S - S_{1}$, como $x \in V = span(S_{1})$,
+según el Lema 
 \ref{lema: S union x es ld sii x en generado de S},
 $S_{1} \cup \{ x \} \subseteq S$ es l.d., luego,
 $S$ es l.d.  $\lightning$
@@ -761,7 +877,7 @@ cualquier otra base de $V$ tendrá $n$ elementos.
 Sea $\gamma \subseteq V$ otra base de $V$.
 Como $\gamma$ (respectivamente, $\beta$) es linealmente independiente
 y $\beta$ (respectivamente, $\gamma$) es base del espacio,
-por el corolario 
+por el Corolario 
 \ref{cor: cardinalidad de bases limita la de los li}
 $|\gamma| \leq |\beta|$ (respectivamente, 
 $|\beta| \leq |\gamma|$).
@@ -777,7 +893,9 @@ Un espacio vectorial se dice \textbf{finito dimensional}
 si tiene una base que consta de un número finito de elementos.
 El único número de elementos en cada base del espacio se llama
 la \textbf{dimensión de $V$}, y se denotará por
-$dim(V)$. Todo espacio vectorial que no sea finito dimensional
+$dim(V)$. 
+
+Todo espacio vectorial que no sea finito dimensional
 será llamado \textbf{infinito dimensional}.
 \end{defi}
 
@@ -786,7 +904,7 @@ para cuando el espacio vectorial tiene una base finita; aunque
 con lo visto hasta ahora no podemos asegurar que cualquier
 espacio vectorial tiene base, esto es cierto y puede
 demostrarse usando el Lema de Zorn. Puedes consultar los
-detalles en Friedberg, sección 1.7.
+detalles en \cite{Friedb}, sección 1.7.
 En la práctica, casi siempre se usarán espacios de dimensión
 finita (de hecho, algún $\IR^{n}$).
 
@@ -814,8 +932,8 @@ sino también del campo $F$.
 	En efecto, $\{ 1 \}$ es base para él, pues
 	\begin{itemize}
 		\item el singulete $\{ 1 \}$ es l.i., y,
-		\item dado $z \in \IC$, $z = 1 \cdot z \in \langle \{ 1 \} \rangle$,
-		luego, $\langle \{ 1 \} = \IC$.
+		\item dado $z \in \IC$, $z = 1 \cdot z \in span(\{ 1 \}) $,
+		luego, $span(\{ 1 \}) = \IC$.
 	\end{itemize}
 	\item El $\IR-$espacio vectorial $\IC$ tiene dimensión $2$,
 	pues una base de este espacio es $\{ 1, i \}$;
@@ -837,7 +955,7 @@ es base de $V$ (luego, $|S| = n$).
 \end{cor}
 \noindent
 \textbf{Demostración.}
-Por el teorema 
+Por el Teorema 
 \ref{teo: extrayendo bases de generadores finitos}, 
 sabemos que existe $S_{1} \subseteq S$ base de $V$.
 Entonces, como $V$ es $n-$dimensional,
@@ -868,7 +986,7 @@ $S_{1} \subseteq \beta$ tal que $S \cup S_{1}$ es base de $V$.
 \end{cor}
 \noindent
 \textbf{Demostración.}
-Por el corolario \ref{cor: cardinalidad de bases limita la de los li},
+Por el Corolario \ref{cor: cardinalidad de bases limita la de los li},
 $m := |S| \leq n$, entonces, por el teorema 
 \ref{teo: un li se completa a generador mediante una base},
 existe $S_{1} \subseteq \beta$ con 
@@ -908,13 +1026,27 @@ Resumimos lo deducido hasta ahora:
 \end{itemize}
 
 \hlpink{Agregar el proceso para extender un l.i. a una base de un
-espacio finito dimensional con la ayuda del lema}
+espacio finito dimensional con la ayuda del Lema}
 \ref{lema: S union x es ld sii x en generado de S}. Poner el ejemplo
 práctico en $M_{2 \times 2}(\IR)$.
 
+
+\begin{prop}
+\hlpink{lo pongo aquí? checa el ejemplo 3.1.5} 
+Sean $U, W \leq V$ subespacios de un
+$F-$espacio vectorial $V$. Las siguientes son equivalentes:
+\begin{itemize}
+	\item $V = U \oplus W$
+	\item Si $\gamma_{1} \subseteq U$, $\gamma_{2} \subseteq W$ son
+	bases de estos subespacios entonces 
+	$\beta := \gamma_{1} \cup \gamma_{2}$ es base de $V$.
+\end{itemize}
+\end{prop}
+
 \section{Caso práctico: Interpolación con polinomios de Lagrange}
 
-
+\TODO{Relación con el determinante de Vandermonde? paper Uncertainty principles and
+signal recovery, p. 909.}
 La situación es la siguiente: se tiene un conjunto de $n+1$ datos
 \marginnote{Interpolación: 
 obtención de nuevos puntos partiendo del conocimiento de un conjunto de puntos.}
@@ -952,11 +1084,9 @@ Para $0 \leq i \leq n$, definamos
 	(c_{i}-c_{i-1})(c_{i}-c_{i+1}) \cdots (c_{i}-c_{n}) }
 	= \prod_{\substack{j=0 \\ j \neq i}}^{n} \frac{x-c_{j}}{c_{i}-c_{j}}.
 \end{equation}
-\marginnote{La condición \ref{eq: propiedad pol lagrange} es la que define
-a los polinomios de Lagrange.}
 A estos $n+1$ polinomios se les llama los
 \textbf{polinomios de Lagrange asociados a $c_{0}, c_{1}, \ldots , c_{n}$}.
-Por supuesto que
+Por supuesto que 
 \begin{equation}
 	\label{eq: propiedad pol lagrange}
 	f_{i}(c_{j}) 
@@ -965,6 +1095,9 @@ Por supuesto que
 	1 & \textit{ si } j = i.
 	\end{cases}
 \end{equation}
+
+La condición \ref{eq: propiedad pol lagrange} es la que define
+a los polinomios de Lagrange.
 
 \begin{figure}[H]
 	\sidecaption{
@@ -1060,7 +1193,7 @@ Si $W = \{ 0 \}$, entonces $dim(W) = 0 \leq n$. Supongamos ahora
 que W tiene al menos un elemento no cero $x_{1}$.
 El singulete
 $\{ x_{1} \}$ es entonces l.i.
-(c.f. proposición \ref{prop: singulete x l.i. sii x no cero}).
+(c.f. Proposición \ref{prop: singulete x l.i. sii x no cero}).
 Podemos continuar de esta forma tomando elementos
 $x_{1}, \ldots, x_{k}$ de $W$
 tales que $\{ x_{1}, \ldots , x_{k} \}$ es l.i.
@@ -1077,7 +1210,7 @@ que
 \]
 luego, 
 \[
-W = \langle \{ x_{1}, \ldots , x_{k} \} \rangle.
+W = span(\{ x_{1}, \ldots , x_{k} \}).
 \]
 Así, el l.i. $\{ x_{1}, \ldots , x_{k} \}$
 genera a $W$, por lo tanto, es base de $W$.
@@ -1089,7 +1222,7 @@ por lo tanto, es también una base de $V$
 (c.f. corolario \ref{cor: li con n element es base}),
 luego,
 \[
-W = \langle \beta \rangle = V.
+W = span(\beta) = V.
 \]
 \QEDB
 \vspace{0.2cm}
@@ -1101,7 +1234,7 @@ $\beta$ de un subespacio de $W$ puede extenderse a una base de $V$.
 \noindent
 \textbf{Demostración.}
 Si $\beta$ es base de $W$, en particular es un subconjunto
-l.i. de $V$, luego, según el corolario 
+l.i. de $V$, luego, según el Corolario 
 \ref{cor: extendiendo l.i. a base finita}, puede extenderse a una
 base de $V$.
 \QEDB
@@ -1222,7 +1355,7 @@ tales que
 \QEDB
 \vspace{0.2cm}
 
-De este teorema y de la proposición 
+De este Teorema y de la Proposición 
 \ref{prop: suma directa sii interseccion cero}
 se sigue el siguiente
 
@@ -1304,8 +1437,18 @@ la de cardinalidad: por ejemplo, en $\IR^{3}$,
 	\item todo plano que pasa por el origen es un subespacio
 	de dimensión dos, y su cardinalidad es $|\IR \times \IR| = |\IR|$.
 \end{itemize}
-Nótese que la dimensión parece ser un mejor indicador del
-``tamaño'' de un subespacio, no la cardinalidad de este. 
+
+
+\begin{figure}[H]
+	\sidecaption{
+		Nótese que la dimensión parece ser un mejor indicador del
+		``tamaño'' de un subespacio, no la cardinalidad de este. 
+	}
+	\centering
+	\includegraphics[scale = 3 ]{30} 
+\end{figure}	
+
+
 \newpage
 
 

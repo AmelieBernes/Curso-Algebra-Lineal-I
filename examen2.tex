@@ -1,0 +1,174 @@
+\section{Simulacro de examen, segundo parcial}
+
+\begin{center}
+	\textbf{Álgebra Lineal I, Otoño 2024 
+	\hspace{0.1cm}	
+	\S 
+	\hspace{0.1cm}	
+	Segundo examen parcial 
+	\hspace{0.1cm}
+	\S
+	\hspace{0.1cm} 
+	Lic. Amélie Bernès}
+\end{center}
+
+
+
+Es obligatorio que contestes los siguientes dos problemas; si tu 
+respuesta es correcta, ganas los puntos correspondientes, pero si no los
+contestas o tu respuesta es incorrecta, pierdes los puntos correspondientes.
+
+\begin{prob}
+($+$0.5/ $-$0.25) Enuncia la definición de transformación lineal.
+\end{prob}
+
+\begin{prob}
+($+$0.5/$-$0.25) Si $T: V \longrightarrow W$ es una transformación lineal y 
+$X \subseteq V$, 
+$Y \subseteq W$, escribe las
+definiciones de los conjuntos $T(X)$
+y $T^{-1}(Y)$.
+\end{prob}
+
+\noindent\rule{\textwidth}{1pt}
+
+Contesta los problemas que quieras de la siguiente lista. 
+En los ejercicios numéricos, es recomendable que escribas limpiamente
+tu procedimiento, para evaluar tu procedimiento en caso de que
+la respuesta numérica final sea incorrecta.
+
+
+\begin{prob}
+(1 p)
+Enuncia el teorema fundamental de las bases.
+\end{prob}
+
+
+\begin{prob}
+(3 p.)
+Enuncia y demuestra el teorema de la dimensión.
+\end{prob}
+
+
+\begin{prob}
+(0.5 p) Sean $V$ y $W$ dos $F-$espacios vectoriales finito dimensionales,
+$T: V\longrightarrow W$ una transformación lineal entre ellos.
+Si $dim(V) < dim(W)$, explica por qué $T$ no puede ser suprayectiva.
+\end{prob}
+
+
+\begin{prob}
+(1 p) 
+Sea $T: V \longrightarrow W$ lineal. Demuestra que $T$ 
+es inyectiva si y sólo si $Ker(T) = \{ 0_{V} \}$.
+\end{prob}
+
+
+\begin{prob}
+(1.5 p)
+Sea $T: V \longrightarrow W$ lineal. Demuestra que, si 
+$\beta = \{ v_{1}, \ldots v_{n} \}$ es un subconjunto de $V$
+tal que $T(\beta) \subseteq W$
+es l.i., entonces $\beta$ también es l.i..
+\end{prob}
+
+
+
+\begin{prob}
+(2 p) Sean 
+$
+\beta = \{ (1, 0, 0), (0, 1, 0), (0, 0, 1) \}\subseteq \IR^{3}$,
+$
+\gamma = \{ (3, 0), (1, -1) \} \subseteq \IR^{2} $
+bases respectivas de $\IR^{3}$ y $\IR^{2}$.
+Da la fórmula de 
+la única transformación lineal $T: \IR^{3} \longrightarrow \IR^{2}$
+tal que 
+$$
+[T]_{\beta}^{\gamma} = ·\begin{pmatrix}
+1 & 7 & 0 \\
+2 & 3 & 4
+\end{pmatrix}.
+$$
+\end{prob}
+
+\begin{prob}
+Sean 
+$$
+\beta =
+ \left\{
+E_{1}= \begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}, \hspace{0.2cm}
+E_{2} = \begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}, \hspace{0.2cm}
+E_{3}= \begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}, \hspace{0.2cm}
+E_{4} = \begin{pmatrix}
+0 & 0 \\
+0 & 1
+\end{pmatrix}
+\right\} \subseteq M_{2 \times 2}(\IR),
+$$
+$$
+\beta' =
+ \left\{
+A= \begin{pmatrix}
+1 & 0 \\
+0 & 2
+\end{pmatrix}, \hspace{0.2cm}
+B= \begin{pmatrix}
+0 & 2 \\
+3 & 0
+\end{pmatrix}, \hspace{0.2cm}
+C= \begin{pmatrix}
+-1 & 0 \\
+0 & 1
+\end{pmatrix}, \hspace{0.2cm}
+D= \begin{pmatrix}
+0 & 3 \\
+2 & 0
+\end{pmatrix}
+\right\} \subseteq M_{2 \times 2}(\IR),
+$$
+$$
+\gamma = \{ 1 \} \subseteq \IR
+$$
+bases de $M_{2 \times 2}(\IR)$ y $\IR$, respectivamente.
+Defínase $T: M_{2 \times 2}(\IR) \longrightarrow \IR$ como
+$
+T \left( \begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix} \right) = a + d.
+$
+\begin{itemize}
+	\item (1 p) Demuestra que $T$ es una transformación lineal.
+	\item (1 p) Calcula $[T]_{\beta'}^{\gamma}$ a partir de la matriz
+	$[T]_{\beta}^{\gamma}$ y una matriz de cambio de base.
+	\item (1 p) Calcula el Kernel de $T$, su dimensión
+	y la dimensión de la imagen de $T$.
+\end{itemize}
+\end{prob}
+
+\begin{prob}
+(1.5 p)
+Considera a la transformación lineal $T: M_{2 \times 2}(\IR) 
+\longrightarrow \IR^{4}$ dada por
+\[
+T 
+\left(
+\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+\right)
+= (4a+3b+10c+d, 4a+b-2c-d, 8a-b+8c+d, -3b-8c-d).
+\]
+¿Es $T$ un isomorfismo? Argumenta tu respuesta.
+\end{prob}

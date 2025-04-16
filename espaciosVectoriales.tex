@@ -1,7 +1,322 @@
 \chapter{Espacios vectoriales}
 
-\section{Espacios vectoriales de funciones}
-\label{subsection: espacios vect de funciones}
+\hlpink{TODO: usar notación de span para subespacios. No quiero que
+se confunda eso con el producto punto.}
+
+
+¿Qué entiendes por un \textit{vector}?
+
+En clases previas de física, usabas estos objetos para representar
+\textit{fuerzas} pues, para hablar de una fuerza,
+se necesita especificar tanto su 
+\textit{magnitud} como su 
+\textit{dirección}.
+\marginnote{Por ejemplo, la fuerza de gravedad que ejerce el planeta Tierra
+en los objetos sobre ella es de $9.8 m/s^{2}$, pero ¿qué dirección tiene?}
+
+
+Algunos aspectos implícitos eran que 
+\begin{itemize}
+\item los vectores eran elementos de
+$\IR^{2}$ o de $\IR^{3}$, 
+\item podías ``sumar vectores'' usando la ley
+del paralelogramo (por ejemplo, si varias fuerzas actuan en un objeto, las sumabas para
+obtener la \textit{fuerza neta} ejercida en el objeto),
+\item además, podías ``multiplicar vectores
+por números reales'' para cambiar su 
+magnitud y, dependiendo del signo del número real,
+mantener la dirección o invertirla (considera, por ejemplo, la 
+segunda Ley de Newton: $\hat{F} = m \hat{a}$).
+\end{itemize}
+
+\begin{center}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale= 3.2]{28} 
+\end{figure}
+\end{center}
+
+
+Estas manipulaciones geométricas además satisfacen
+ciertas propiedades algebráicas; por ejemplo, 
+dados tres vectores $\hat{a}, \hat{b}, \hat{c} \in \IR^{2}$
+y dos escalares $m, n \in \IR$, puedes comprobar geométricamente que
+\[
+\hat{a} + (\hat{b} + \hat{c}) = (\hat{a} + \hat{b}) + \hat{c},
+\]
+\begin{equation}
+	\label{eq: 1}
+	m (\hat{a} + \hat{b}) = m \hat{a} + m \hat{b},
+\end{equation}
+o que 
+\[
+m(n\hat{a}) = (mn) \hat{a}.
+\]
+
+Abstrayendo este escenario, tenemos
+\begin{itemize}
+	\item un conjunto $V$ de ``vectores'', que pueden ser sumados entre sí,
+	\item otro conjunto $F$ de ``escalares'', cuyos elementos pueden multiplicarse 
+	por elementos de $V$. En $F$ además se pueden hacer sumas y productos.
+	\item Además, tenemos ciertas relaciones entre las operaciones de $F$ y $V$
+	(c.f. \eqref{eq: 1}).
+\end{itemize}
+
+\section{Algunas estructuras algebráicas}
+Ya comentamos antes que sabíamos sumar vectores en el plano o 
+en el espacio; empecemos pues por abstraer el 
+concepto de operación. Estamos acostumbrados a sumar 
+números reales: dados $a, b \in \IR$, conocemos una
+\textit{regla} para asignarle a la pareja $(a, b)$
+un número real llamado su suma, que solemos denotar por $a+b$.
+También hablamos de la resta de los números $a, b$.
+Observe que estas operaciones tienen distintas propiedades, por
+ejemplo, la suma es asociativa y conmutativa, pero
+la resta no. 
+\begin{defi}
+Dado $X \neq \emptyset$ un conjunto no vacío, una
+\textbf{operación binaria} en $X$ es una función con dominio
+$X \times X$ y codominio $X$.
+\end{defi}
+O sea, una operación binaria $*: X \times X \longrightarrow X$ 
+es una regla que a cada para ordenado $(x_{1}, x_{2})$ le asigna
+un único elemento $x_{3}$ de $X$. Por ser este elemento único,
+puede dársele un nombre; es usual denotar a $x_{3}$
+por $x_{1} * x_{2}$.
+\marginnote{Es decir, con $x_{1} * x_{2}$ estamos abreviando a 
+$*(x_{1}, x_{2})$.}
+
+\begin{defi}
+Dado $X \neq \emptyset$ y $+: X \times X \longrightarrow X$
+una operación binaria en $X$, la pareja $(X, +)$ es un \textbf{grupo}
+si 
+\begin{itemize}
+	\item[GR-1)] \textit{(asociatividad)} Para cualesquiera 
+	$x_{1}, x_{2}, x_{3} \in X$,
+	\marginnote{La asociatividad de la operación $*$
+	significa en la práctica que los paréntesis en 
+	\eqref{eq: grupo asociatividad} pueden omitirse.}
+	\begin{equation}
+		\label{eq: grupo asociatividad}
+		(x_{1} + x_{2} ) + x_{3} = x_{1} + (x_{2} + x_{3}).
+	\end{equation}
+	\item[GR-2)] \textit{(existencia de elemento neutro)} Existe
+	$e \in X$ tal que 
+	\begin{equation}
+		\label{eq: grupo e}
+		\forall x \in X: \hspace{0.2cm}
+		e + x = x = x + e.
+	\end{equation}
+	\item[GR-3)] \textit{(existencia de inversos)} 
+	Se cumple que 
+	\begin{equation}
+		\label{eq: grupo inversos}
+		\forall x \in X \hspace{0.1cm}
+		\exists -x \in X: \hspace{0.2cm}
+		x + (-x) = e = (-x) + x.
+	\end{equation}
+\end{itemize}
+\end{defi}
+Es fácil demostrar la unicidad del elemento neutro y de los inversos
+- por eso es legítimo darles un nombre particular a estos en la 
+definición de grupo.
+Si la operación binaria $+$ se entiende por el contexto, al grupo
+$(X, +)$ se le denota por $X$.
+\begin{defi}
+A todo grupo $(X, +)$ que satisfaga que 
+\begin{itemize}
+	\item[GR-4)] \textit{(conmutatividad)}
+	\begin{equation}
+		\label{eq: grupo conmut}
+		\forall x_{1}, x_{2} \in X : \hspace{0.2cm}
+		x_{1} + x_{2} = x_{2} + x_{1}
+	\end{equation}
+	se le llamará \textbf{abeliano}.
+\end{itemize}
+\end{defi}
+
+
+La motivación del concepto de grupo es tener un conjunto con una
+operación binaria en el que se puedan hacer cancelaciones;
+si en un grupo $(G, +)$ se tiene una ecuación de la forma
+\[
+a + b = a + c,
+\]
+sumando a ambos lados de la igualdad el inverso de $a$ 
+y usando el que la operación sea asociativa, se tiene que 
+\[
+e + b = e + c,
+\]
+luego, que 
+\[
+b = c.
+\]
+
+\begin{ejem}
+Considera al conjunto $\IZ$ de los números enteros.
+\begin{itemize}
+	\item Si $+$ denota a la suma usual de números enteros,
+	comprueba que $(\IZ, +)$ es un grupo.
+	\marginnote{Este último punto muestra que frases del tipo
+	``el conjunto $X$ es un grupo'' son ambiguas. Puede ser posible
+	definir dos operaciones binarias $+$ y $\cdot$ en $X$
+	de tal forma que tanto $(X, +)$ como $(X, \cdot)$ sean
+	grupos. Los conjuntos subyacentes de estos grupos son los mismos,
+	pero estos no son el mismo grupo.}
+	\item Muestra que, si $\cdot$ denota al producto usual 
+	de enteros, $(\IZ, \cdot)$ \textit{no} es un grupo.
+	\item Si ahora $+$ y $\cdot$ denotan, respectivamente, la
+	suma y producto de números racionales, demuestra que
+	tanto $(\IQ, +)$ como $(\IQ - \{ 0 \}, \cdot)$ son grupos abelianos.
+\end{itemize}
+\end{ejem}
+
+
+\begin{defi}
+Dado $F \neq \emptyset$ un conjunto no vacío y dos operaciones binarias
+$+ : F \times F \longrightarrow F$ y $\cdot: F \times F \longrightarrow F$,
+$(F, +, 0, \cdot, 1)$ con $0 \neq 1$ es un \textbf{campo} si 
+\begin{itemize}
+	\item $(F, +)$ es un grupo abeliano con neutro $0$, es decir, si 
+	\begin{itemize}
+		\item $\forall a, b, c \in F$: $a + (b + c) = (a + b) + c$,
+		\item $\forall a \in F$: $a + 0 = a = 0 + a$,
+		\item $(\forall a \in F)$ $(\exists -a \in X)$: $a + (-a) = 0 = (-a) + a$,
+		\item $\forall a, b \in F$: $a + b = b + a$,
+	\end{itemize}
+	\item $(F- \{ 0 \}, \cdot)$ es un grupo abeliano con neutro $1$, es decir,
+	\begin{itemize}
+		\item $\forall a, b, c \in F-\{0\}$: $a \cdot (b \cdot c) = (a \cdot b) \cdot c$
+		\item $\forall a \in F - \{0\}:$ $a \cdot 1 = a = 1 \cdot a$,
+		\item $(\forall a \in F - \{0\})$ $(\exists a^{-1} \in F- \{0\})$:
+		$a \cdot a^{-1} = 1 = a^{-1} \cdot a$,
+		\item $\forall a, b \in F - \{0\}$: $a \cdot b = b \cdot a$.
+	\end{itemize}
+	\item \textit{(distributividad)} 
+	Para cualesquiera $a, b, c \in F$:
+	\begin{equation}
+		\label{eq: campo distrib}
+		a \cdot (b + c) = a \cdot b + a \cdot c.
+	\end{equation}
+\end{itemize} 
+\end{defi}
+La distributividad es la propiedad que relaciona las estructuras
+$(X, +)$ y $(X, \cdot)$ que conforman un campo. Por costumbre,
+al neutro de $(X, +)$ se le suele llamar el \textbf{neutro aditivo}
+del campo, y al neutro de $(X-\{ 0 \}, \cdot)$ se le llama el
+\textbf{neutro multiplicativo}.
+
+Por tener la ley distributiva, si $x \in X$ cualquiera,
+\[
+x \cdot 0 = x \cdot (0 + 0) = x \cdot 0 + x \cdot 0,
+\]
+luego, 
+\[
+x \cdot 0 = 0.
+\]
+Así, no existe $x \in X$ tal que $x \cdot 0 = 1$; por eso 
+se debe quitar el cero para hablar del grupo multiplicativo
+$(X- \{ 0 \}, \cdot)$.
+
+\section{Definición de espacio vectorial}
+Ya tenemos los elementos necesarios para dar una de las definiciones
+centrales del curso.
+
+\begin{defi}
+	\label{defi: espacio vectorial}
+	Sean $(V, +)$ un grupo abeliano y $F$ un campo. Si 
+	$\cdot : F \times V \longrightarrow V$ es tal que 
+	\marginnote{La función $\cdot$ (que no es una operación binaria, ¿verdad?)
+	es la que conecta las estructuras de grupo abeliano y de campo que conforman
+	a un espacio vectorial.}
+	\begin{itemize}
+		\item[EV-5)] $(\forall x \in V):$ $1_{F} \cdot x = x$,
+		\item[EV-6)] $(\forall a, b \in F) (\forall x \in V):$
+		$(ab) \cdot x = a \cdot (b \cdot x)$,
+		\item[EV-7)] $(\forall a \in F)(\forall x, y \in V):$
+		$a\cdot (x + y) = a \cdot x + a \cdot y$,
+		\item[EV-8)] $(\forall a, b \in F)(\forall x \in V): $
+		$(a+b) \cdot x = a \cdot x + b \cdot x $,
+	\end{itemize}
+	entonces $(V, + F, \cdot)$ es un \textbf{$F$-espacio vectorial}.
+\end{defi}
+Recuerda que, el que $(V, +)$ sea grupo abeliano, significa que 
+\begin{itemize}
+	\item[EV-1)] $(\forall x, y, z V):$ $x + (y+z) = (x+y) + z$,
+	\item[EV-2)] $(\exists 0_{V} \in V) (\forall x \in V):$
+	$0_{V} + x = x = x + 0_{V}$,
+	\item[EV-3)] $(\forall x \in V)(\exists -x \in V):$
+	$x + (-x) = 0_{V} = (-x) + x$,
+	\item[EV-4)] $(\forall x, y \in V): $
+	$x+y = y +x$.
+\end{itemize}
+
+Por tradición, a los elementos de $V$ se les llama ``vectores'' y a los
+de $F$ ``escalares''. Nota que los vectores entonces son los elementos del 
+grupo abeliano (cuyos elementos no necesariamente pertenecen a $\IR^{2}$
+o $\IR^{3}$).
+
+Se permite en la definición de espacio vectorial que $F$ sea cualquier campo
+pero, a menos que se indique lo contrario, en lo que sigue entenderemos que
+$F \in \{ \IR, \IC \}$.
+Si hay riesgo de confusión, al vector cero se le denotará por $\hat{0}$
+y al escalar cero se le denota por $0_{F}$. 
+
+
+\section{Ejemplos de espacios vectoriales}
+Vamos a dar las construcciones de espacios vectoriales concretos con los 
+que trabaremos ampliamente en el curso.
+En la lista de ejercicios \ref{section: ejercicios I}
+se dan más ejemplos.
+
+\subsection{El $F-$espacio vectorial $F^{n}$}
+Sea $n \geq 1$ entero.
+Tanto $\IR^{n}$ como $\IC^{n}$ con la suma definida ``entrada a entrada''
+son grupos abelianos:
+
+\begin{equation}
+	\label{eq: suma en Rn}
+	\forall x = (x_{k})_{k=1}^{n}, y = (y_{k})_{k=1}^{n} \in \IR^{n}:
+	\hspace{0.2cm} x + y := (x_{k} + y_{k})_{k=1}^{n}.
+\end{equation}
+De forma similar, fijado un campo, podemos definir multiplicación 
+escalar ``entrada a entrada'': si 
+$\cdot : \IR \times \IR^{n} \longrightarrow \IR^{n}$ se define como 
+\begin{equation}
+	\label{eq: mult escalar en Rn}
+	\forall x = (x_{k})_{k=1}^{n} \in \IR^{n}, a \in \IR:
+	\hspace{0.2cm} ax := (ax_{k})_{k=1}^{n},
+\end{equation}
+puede comprobarse que $\IR^{n}$ con esta multiplicación escalar es un
+$\IR-$espacio vectorial.
+De forma similar se puede definir una $\IC-$multiplicación escalar en 
+$\IC^{n}$ y también una $\IR-$multiplicación escalar en $\IC$.
+¿Por qué no tiene sentido cambiar al campo de escalares en \eqref{eq: mult escalar en Rn}
+por $\IC$?
+
+
+En general, si $F$ es un campo y se considera el grupo abeliano
+$F^{n}$ de $n-$tuplas con entradas en $F$ y suma definida como en 
+\eqref{eq: suma en Rn}, con la multiplicación 
+escalar definida como en \eqref{eq: mult escalar en Rn}, obtenemos un 
+$F-$espacio vectorial. Haciendo $n = 1$, se tiene que $F$ es también un 
+$F-$espacio vectorial (la multiplicación por escalares en este contexto es
+la multiplicación en el campo $F$).
+
+\begin{ejem}
+	El grupo abeliano $\IR^{n}$ con la suma entrada a entrada con la multiplicación
+	por escalares entrada a entrada es un $\IR-$espacio vectorial.
+	$\IC^{n}$ puede ser visto como $\IC-$espacio vectorial o como $\IR-$espacio vectorial,
+	dependiendo de en qué campo se tomen los escalares.
+\end{ejem}
+
+\subsection{El $F-$espacio vectorial $F^{X}$ de funciones de $X$ en $F$}
+\label{subs: F ev de funciones de X en F}
+Vamos ahora a definir espacios vectoriales cuyos vectores son funciones;
+lo hacemos de esta forma porque esta construcción general engloba varios
+ejemplos de interés práctico, por ejemplo, a los espacios de sucesiones o espacios
+de funciones continuas - ambos importantes en el análisis - o el
+espacio de polinomios con coeficientes en un campo.
 
 Sean $X \neq \emptyset$ un conjunto no vacío cualquiera
 y $(F, +, 0, \cdot, 1)$ un campo. Consideremos al conjunto
@@ -180,8 +495,7 @@ $\mathcal{C}(\IR) \subseteq \IR^{\IR}$.
 \end{ejem}
 
 
-\subsubsection{Espacio de funciones de soporte finito $F^{(X)}$}
-
+\subsection{Espacio de funciones de soporte finito $F^{(X)}$}
 
 \begin{defi}
 Sean $X \neq \emptyset$ un conjunto, $F$ un campo. Dada
@@ -202,7 +516,9 @@ sop(f) :=
 
 \begin{ejem}
 Tomemos a $X = \IN$. Acostumbramos llamar a los 
-elementos de $F^{\IN}$ \textbf{sucesiones en $F$}.
+elementos de $F^{\IN}$ 
+(i.e. a las funciones de $\IN$ en $F$)
+\textbf{sucesiones en $F$}.
 De hecho, dada una función $f \in F^{\IN}$, 
 es usual identificarla con el conjunto de sus imágenes:
 \[
@@ -212,7 +528,9 @@ f_{n} := f(n).
 \]
 \hlgray{Ejercicio:} Demuestre que,
 si $f = (f_{n})_{n \in \IN} \in F ^{\IN}$ tiene soporte 
-finito, entonces $\lim_{n \rightarrow \infty} f(n) = 0$.
+finito, entonces 
+se debe tener
+$\lim_{n \rightarrow \infty} f(n) = 0$.
 ¿Se vale la otra implicación?
 \diam
 \end{ejem}
@@ -221,8 +539,8 @@ finito, entonces $\lim_{n \rightarrow \infty} f(n) = 0$.
 \begin{defi}
 Denotaremos por $F^{(X)}$ al conjunto de las funciones
 de $X$ en $F$ que tienen soporte finito, es decir,
-\[F^{(X)} := \{ f \in F^{X}  | \hspace{0.2cm}  
-|sop(f) < \infty|\}.
+\[F^{(X)} := \{ f \in F^{X}  : \hspace{0.2cm}  
+|sop(f) | < \infty \}.
 \]
 \end{defi}
 
@@ -302,6 +620,271 @@ para mostrar que $F^{(X)} \leq F^{X}$.
 \QEDB
 \vspace{0.2cm}
 
+\begin{nota}
+	Por un polinomio, por lo general se entiende una función
+	$f: F \longrightarrow F$
+	de la forma 
+	\begin{equation}
+		\label{eq: pol en x}
+	f(x) = a_{0} + a_{1}x + \ldots + a_{n}x^{n}, \hspace{0.2cm}
+	n \in \IN, a_{k} \in F,
+	\end{equation}
+	con los ``coeficientes'' $a_{k} \in F$ y la ``incógnita''
+	$x$, que puede tomar valores en el campo $F$.
+	\marginnote{En realidad, basta con partir de un anillo $R$ - que no necesariamente
+	sea campo -  para construir al anillo de polinomios con coeficientes en $R$.}
+	
+	La construcción formal usual de polinomios con coeficientes en un campo $F$
+	consiste justamente en considerar al espacio vectorial $F^{(\IN)}$ de sucesiones
+	en el campo $F$ de soporte finito, pues, la propiedad que se intenta capturar
+	es que dos expresiones de la forma 
+		$a_{0} + a_{1}x + \ldots + a_{n}x^{n}$ y
+		$b_{0} + b_{1}x + \ldots + b_{m}x^{m}$ sean iguales si y sólo si 
+		$a_{i} = b_{i}$ para toda $i$ (si $n < m$, claro que se supone $a_{i} = 0$
+		para $i > n$). 
+	Esto claro está se consigue si se identifica al poliniomio en $x$
+	\eqref{eq: pol en x} con la sucesión 
+	\[
+	f = (a_{0}, a_{1}, \ldots, a_{n}, 0, 0, 0, \ldots) \in F^{(\IN)}.
+	\]
+	
+	Los detalles de la construcción pueden consultarse en 
+	\cite{Jacobson}, \cite{Rotman}.
+\end{nota}
+
+
+
+
+\section{Propiedades básicas de espacios vectoriales}
+Deducimos a continuación resultados inmediatos de la definición
+\ref{defi: espacio vectorial}.
+
+
+\begin{prop}
+		\label{prop: hechos basicos ev}
+	Sea $V$ un $F-$espacio vectorial.
+	\begin{itemize}
+		\item Para todo $v\in V$, $0_{F} \cdot v = \hat{0}$.
+		\item Para todo $a \in F$, $a \cdot \hat{0} = \hat{0}$.
+		\item Para todo $v \in V$, $(-1) \cdot v = - v$.
+	\end{itemize}
+\end{prop}
+\textbf{Demostración.}
+\begin{itemize}
+	\item Sólo observe que 
+	\[
+	0_{F}  \cdot v + 0_{F} \cdot v = (0_{F} + 0_{F}) \cdot v = 0_{F}\cdot v
+	= 0_{F} \cdot v + \hat{0},
+	\]
+	\marginnote{\hlgray{Ejercicio:} en la demostración, marque qué puntos de la definición
+	de espacio vectorial se están usando.}
+	note que esta es una ecuación en el grupo abeliano $V$, luego, podemos 
+	cancelar el elemento $0_{F} \cdot v$ a ambos lados de la igualdad, para
+	llegar a que $0_{F} \cdot v = \hat{0}$.
+	\item \hlgray{Ejercicio.}
+	\item El elemento $(-1) \cdot v \in V$ es tal que 
+	\[
+	(-1) \cdot v + v = (-1) \cdot v + 1 \cdot v = (-1+1) \cdot v
+	= 0_{F} \cdot v = \hat{0},
+	\]
+	luego, por unicidad del inverso aditivo en $V$, concluimos que 
+	\[
+	(-1) \cdot v = -v.
+	\]
+\end{itemize}
+
+\QEDB
+\vspace{0.2cm}
+
+\textbf{¿Verdadero o falso?} 
+\begin{itemize}
+	\item[a)] ``Todo espacio vectorial contiene un vector cero''
+	\item[b)] ``Un espacio vectorial puede contener más de un vector cero''
+	\item[c)] ``En un $F-$espacio vectorial $V$, si $a, b \in F$ y $x \in V$, entonces 
+	la ecuación $a x = b x $ implica $a = b$ ''
+	\item[d)]  ``En un $F-$espacio vectorial $V$, si $a \in F$ y $x, y \in V$, entonces 
+	la ecuación $a x = a y $ implica $x = y$ ''
+\end{itemize}
+
+
+\begin{prop}
+		\label{prop: cancelacion en espacio vect}
+	Sea $V$ un $F-$espacio vectorial. 
+	\begin{itemize}
+		\item Si $x \in V - \{0 \}$, entonces, para cualesquiera escalares
+		$a, b \in F$, $ax = bx$ implica $a = b$.
+		\item Si $a \in F - \{ 0 \}$, entonces, para cualesquiera vectores
+		$x, y \in V$, $ax = ay$ implica $x = y$.
+	\end{itemize}
+\end{prop}
+\textbf{Demostración.}
+\begin{marginfigure}
+	\includegraphics[scale= 2]{27} 
+	\caption{Ilustración del primer punto de la Proposición
+	\ref{prop: cancelacion en espacio vect} para el caso $V = \IR^{2}$.}
+\end{marginfigure}
+
+\begin{itemize}
+	\item Sea $x$ un vector no cero, y supongamos que existen escalares $a, b$ distintos
+	entre sí tales que $ax = bx$. Entonces, si $c := a - b \neq 0$,
+	\[
+	c x = (a-b) x = ax - bx = \hat{0}.
+	\]
+	Como $c$ es un elemento no cero del campo $F$, tiene inverso multiplicativo $c^{-1}$.
+	Así,
+	\[
+	x = 1_{F} \cdot x = (c^{-1} c) \cdot x = c^{-1} \cdot (c \cdot x) = c^{-1} \cdot
+	\hat{0} = \hat{0}, 
+	\]
+	contradiciendo la hipótesis.
+	\item \hlgray{Ejercicio}.
+\end{itemize}
+
+\QEDB
+\vspace{0.2cm}
+
+La versión de la Proposición \ref{prop: cancelacion en espacio vect}
+para el $\IR-$espacio vectorial $\IR^{2}$ sería
+\begin{center}
+	Si $x = (x_{1}, x_{2}) \in \IR^{2}- \{ (0, 0) \}$ y $a, b \in \IR$
+	tales que $ax = bx$, entonces $a = b$.
+\end{center}
+Podemos demostrar esta afirmación directamente; como $x$ no es el vector cero,
+sin pérdida de generalidad $x_{1} \neq 0$. De la hipótesis 
+\[
+(ax_{1}, ax_{2}) = a x = b x = (bx_{1}, bx_{2}) 
+\]
+se tiene la igualdad en $\IR$ $ax_{1} = bx_{1}$. Como $x_{1} \neq 0$, existe su 
+inverso multiplicativo; multiplicando por este a ambos lados de la igualdad, 
+se llega a que $a = b$, como se quería.
+
+
+Nota que la diferencia entre este argumento y el de la demostración de la
+Proposición \ref{prop: cancelacion en espacio vect} es que este primero hace
+referencia a la forma de los elementos del espacio vectorial $\IR^{2}$, mientras
+que el segundo sólo usa los axiomas de campo y espacio vectorial. 
+
+\begin{ejem}
+	\textbf{El espacio vectorial trivial:} considere al grupo abeliano $V = \{ 0 \}$ - con 
+	la suma definida de la única forma posible. Sea $F$ un campo cualquiera. La
+	\textit{única} forma de definir una función $\cdot : F \times V \longrightarrow V$
+	es por
+	\[
+	\forall a \in F: \hspace{0.2cm} a \cdot 0 = 0.
+	\]
+	Puede comprobar que, con este producto escalar, $V$ es un $F-$ espacio vectorial, 
+	al que solemos denominar el \textbf{espacio vectorial cero} o el 
+	\textbf{espacio trivial}.
+\end{ejem}
+
+\section{Subespacios vectoriales}
+En muchas ocasiones, dado $V$ un $F-$espacio vectorial, nos interesará trabajar
+con subestructuras de $V$ que ``con la misma suma y multiplicación por escalares'', 
+sean en sí mismas espacios vectoriales.
+
+\marginnote{Si $f: A \longrightarrow B$ es una función y $C$ es un subconjunto de 
+$A$, por $f_{|C}$ denotamos a la \textbf{restricción de $f$ a $C$}.}
+\begin{defi}
+		\label{def: de subespacio}
+	Sea $(V, +, 0_{V}, F, \cdot : F \times V \longrightarrow V)$ un espacio vectorial.
+	Un subconjunto no vacío $\emptyset \neq W \subseteq V$ es un
+	\textbf{subespacio vectorial} de $V$ si 
+	$$(W, +_{| W \times W}, 0_{V}, F, \cdot_{|F \times W}: F \times W \longrightarrow W)$$
+	es un espacio vectorial.
+	En este caso, escribimos $W \leq V$.
+\end{defi}
+En la definición de subespacio, nótese que se está suponiendo que
+las restricciones $+_{W \times W}$ y $\cdot_{F \times W}$ 
+tengan ambas como codominio a $W$ - pues se están usando para dotar a $W$ 
+de estructura de espacio vectorial.
+
+Si quisieramos usar la Definición
+\ref{def: de subespacio} para ver si un subconjunto $W$ de
+$V$ es subespacio, nota que las propiedades 
+$EV5 - EV8$ se cumplen todas ``por herencia de $V$'' - si son ciertas
+para todo elemento de $V$, por supuesto que lo son para todo elemento del
+subconjunto $W$ de $V$. Entonces, $W$ es subespacio de $V$ si y sólo si  
+los codominios de $+_{W \times W}$ y $\cdot_{F \times W}$ son $W$ y 
+$(W, +_{W \times W})$ es un grupo abeliano, es decir, si 
+
+\begin{itemize}
+	\item Para cualesquiera $x, y \in W$: $x + y \in W$
+	\item Para cualesquiera $x \in W$, $a \in F$: $ax \in W$
+	\item $0_{V} \in W$
+	\item Para todo $x \in W$, también $-x \in W$.
+\end{itemize}
+De hecho, el cumplir estas
+primeras tres condiciones
+es necesario y suficiente para ser subespacio.
+
+\begin{teo}
+	\label{teo: caracterizacion de subespacios}
+	Sea $V$ un $F-$espacio vectorial, $W$ un subconjunto de $V$. 
+	Entonces, $W$ es subespacio de $V$ si y sólo si 
+	\begin{itemize}
+		\item $\hat{0} \in W$
+		\item \textit{(Cerradura bajo la suma)} Para cualesquiera $x, y \in W$: $x + y \in W$
+		\item \textit{(Cerradura bajo multiplicación escalar)} Para cualesquiera 
+		$x \in W$, $a \in F$: $ax \in W$
+	\end{itemize}
+\end{teo}
+\marginnote{El Teorema \ref{teo: caracterizacion de subespacios} es el que en 
+la práctica se usa para determinar si $\emptyset \neq W \subseteq V$ es subespacio o no.}
+\textbf{Demostración.}
+\begin{itemize}
+	\item[$\Rightarrow$)] Trivial
+	\item[$\Leftarrow$] Por la discusión de arriba, basta ver que, para todo
+	$x \in W$, también $-x \in W$, pero esto por la cerradura bajo multiplicación 
+	por escalares y la Proposición 
+	\ref{prop: hechos basicos ev} se cumple, pues
+	\[
+	-x = (-1_{F}) \cdot x \in W.
+	\]
+\end{itemize}
+\QEDB
+\vspace{0.2cm}
+
+\begin{ejem}
+	Dados $a < b$ números reales, 
+	considere al $\IR-$espacio vectorial de funciones $\IR^{[a, b]}$. 
+	Sea
+	\[
+	\mathcal{C}(a, b) := \{ f \in \IR^{[a, b]} : \hspace{0.2cm} f \textit{
+	es continua en } [a, b] \}.
+	\]
+	Se demuestra que
+	\begin{itemize}
+		\item la función constante cero $\hat{0}_{[a, b]}$ es una función continua,
+		\item la suma de funciones continuas es continua, y
+		\item la multiplicación de una función continua por un escalar resulta en una
+		función continua,
+	\end{itemize}
+	luego, $\mathcal{C}(a, b)$ es un subespacio de $\IR^{[a, b]}$.
+\end{ejem}
+
+Muchas veces, si se quiere probar que $W$ es espacio vectorial, resulta más sencillo
+verlo como subconjunto de un espacio vectorial y mostrar que es subespacio de este,
+pues lo primero requiere comprobar tres condiciones 
+(c.f. Teorema \ref{teo: caracterizacion de subespacios}), mientras que lo segundo 
+requiere comprobar ocho condiciones 
+(c.f. Definición \ref{defi: espacio vectorial}).
+
+\hlgray{Ejercicio:}
+	considere al conjunto 
+	\[
+	U = \{ (x, x, 0, y) \in \IR^{4} : \hspace{0.2cm} x, y \in \IR  \}.
+	\]
+	Si la suma y multiplicación por escalares se definen entrada a entrada,
+	demuestre que $U$ es un $\IR-$espacio vectorial.
+
+\hlgray{Ejercicio:}
+sea ahora
+\[
+U' = \{ (x, x, 1, y) \in \IR^{4} : \hspace{0.2cm} x, y \in \IR  \}.
+\]
+¿Es $U'$ subespacio de $\IR^{4}$?
+
+
 \section{El subespacio generado por un subconjunto y suma de subespacios}
 
 
@@ -373,6 +956,7 @@ unión.
 
 
 \begin{ejem}
+	\label{ej: subespacios funciones, dominio abierto}
 (Que muestra que la unión de subespacios puede no ser un subespacio).
 Sea $(a, b) \subseteq \IR$ un intervalo abierto cualquiera.
 Considere al $\IR-$espacio vectorial
@@ -383,13 +967,24 @@ Considere al $\IR-$espacio vectorial
 
 Sean 
 \[
-\mathcal{B}_{a, b} = \{ f \in \IR^{(a, b)}  | \hspace{0.2cm}
+\mathcal{B}_{(a, b)} = \{ f \in \IR^{(a, b)}  | \hspace{0.2cm}
 f \textit{ es acotada}  \}, \hspace{0.4cm}
-\mathcal{C}_{a, b} = \{ f \in \IR^{(a, b)}  | \hspace{0.2cm}
+\mathcal{C}_{(a, b)} = \{ f \in \IR^{(a, b)}  | \hspace{0.2cm}
 f \textit{ es continua}  \}.
 \]
 Como sabes por tus cursos de cálculo, estos son subespacios
-de $\IR^{(a, b)}$. En la imagen se muestran la gráfica
+de $\IR^{(a, b)}$. Claro que ninguno de ellos está contenido en el otro
+(hay funciones definidas en $(a, b)$ que son continuas pero no acotadas, así
+como acotadas pero no continuas).
+Nota que 
+\begin{itemize}
+	\item $\hat{0} \in \mathcal{B}_{(a, b)} \cup \mathcal{C}_{(a, b)}$, y que
+	\item si $\lambda \in \IR$ y $f \in \mathcal{B}_{(a, b)} \cup \mathcal{C}_{(a, b)}$,
+	entonces también $\lambda f \in \mathcal{B}_{(a, b)} \cup \mathcal{C}_{(a, b)}$,
+\end{itemize}
+sin embargo, $\mathcal{B}_{(a, b)} \cup \mathcal{C}_{(a, b)}$ \textbf{no} es un
+subespacio de $\IR^{(a, b)}$, pues no es cerrado bajo la suma.
+En la imagen se muestran la gráfica
 de una función continua $f$ y una acotada
 $g$ en $(a, b)$ para las que la suma no es ni continua ni 
 acotada (i.e. tales que $f, g \in \mathcal{B}_{a, b} \cup
@@ -405,6 +1000,27 @@ el sumando acotado, la continuidad.
 	\includegraphics[scale = 2.5]{2} 
 \end{figure}	
 \diam
+\end{ejem}
+
+\begin{ejem}
+	\label{ej: subespacios funciones, dominio compacto}
+	Ahora considera a los espacios de funciones 
+	$\IR^{[a, b]}$, $\mathcal{B}_{[a, b]}$, $\mathcal{C}_{[a, b]}$.
+	Demostraste en tu curso de cálculo de una variable que toda
+	función con dominio \textbf{cerrado y acotado} que sea continua,
+	es también acotada (c.f. \TODO{cita Spivak, p. 178}). Entonces, 
+	\[
+	\mathcal{C}_{[a, b]} \subseteq \mathcal{B}_{[a, b]},
+	\]
+	luego, la unión
+	\marginnote{Los Ejemplos \ref{ej: subespacios funciones, dominio abierto} y 
+	\ref{ej: subespacios funciones, dominio compacto} nos hacen ver que aspectos
+	propios del dominio $X$ común a las funciones que conforman el espacio vectorial
+	(en particular, su topología), afectan la forma que tengan estos espacios.}
+	\[
+	\mathcal{C}_{[a, b]} \cup \mathcal{B}_{[a, b]} = \mathcal{B}_{[a, b]}
+	\]
+	trivialmente es un subespacio de $\IR^{[a, b]}$.
 \end{ejem}
 
 \hlgray{Ejercicio:} Si $\{ W_{\alpha} \}_{\alpha \in I}$
@@ -436,7 +1052,7 @@ Sean $V$ un $F-$espacio vectorial, $X \subseteq V$.
 El subespacio
 \begin{equation}
 	\label{eq: sub generado por X}
-	\langle X \rangle := \bigcap \{ W \leq V : \hspace{0.2cm}
+	span (X) := \bigcap \{ W \leq V : \hspace{0.2cm}
 	X \subseteq W \},
 \end{equation}
 o sea, la intersección de la familia de todos los subespacios
@@ -445,19 +1061,19 @@ de $V$ que contienen a $X$, es llamado el
 \end{defi}
 
 \begin{prop}
-$\langle X \rangle$ es el menor subespacio de $V$
+$span (X)$ es el menor subespacio de $V$
 que contiene a $X$, es decir,
 \marginnote{Estamos considerando a la contención de conjuntos
 como orden; el que un conjunto $A$ sea menor que un conjunto
 $B$ significa que $A$ está contenido en $B$.}
 \[
 \forall \hspace{0.1cm} W \leq V: \hspace{0.2cm}
-X \subseteq W \Rightarrow \langle X \rangle \leq W.
+X \subseteq W \Rightarrow span (X) \leq W.
 \]
 \end{prop}
 \noindent
 \textbf{Demostración.}
-Es clara pues, $\langle X \rangle$, al ser por definición
+Es clara pues, $span (X)$, al ser por definición
 la intersección de la familia de subespacios que
 contienen a $X$, está contenido en cada uno de sus integrantes.
 
@@ -465,31 +1081,32 @@ contienen a $X$, está contenido en cada uno de sus integrantes.
 \vspace{0.2cm}
 
 En resumen: si $X$ no es subespacio, siempre podemos
-considerar a $\langle X \rangle$, \textit{el menor}
+considerar a $span (X)$, \textit{el menor}
 subespacio de $V$ que contiene al conjunto de interés.
 
 \hlgray{Ejercicio:} Demuestre que, si $X \leq V$,
-entonces $X = \langle X \rangle$.
+entonces $X = span (X)$.
 
 \begin{obs}
 Por definición,
-$\langle \emptyset \rangle $ es la intersección 
+$span (\emptyset)$ es la intersección 
 de la familia de subespacios que contienen a 
 $\emptyset$ - o sea, es la intersección de todos los subespacios
 de $V$. Como $\{ 0 \}$ es el menor subespacio de $V$, concluimos que
 \[
-\langle \emptyset \rangle = \{ 0 \}.
+span (\emptyset)= \{ 0 \}.
 \] 
 \end{obs}
 
 En \eqref{eq: sub generado por X} decimos cómo
-construir a tal $\langle X \rangle$; el objetivo ahora es dar
+construir teóricamente a tal $span (X)$; el objetivo ahora es dar
 una descripción completa de sus elementos, es decir,
 dar un criterio concreto en base al cual determinar
 cuándo un vector $x$ del espacio pertenece a 
-$\langle X \rangle$.
+$span (X)$.
 
-Según la proposición (*-sub), $X$ puede no ser subespacio
+Según el Teorema \ref{teo: caracterizacion de subespacios}, 
+$X$ puede no ser subespacio
 por cumplirse al menos una de las tres razones siguientes:
 \begin{itemize}
 	\item $\hat{0} \not\in X$; corregimos esto agregando
@@ -504,8 +1121,9 @@ por cumplirse al menos una de las tres razones siguientes:
 
 Parece que el problema de no ser subespacio se arregla
 si agregamos sumas finitas de múltiplos escalares de elementos
-de $X$ (pues así estamos forzando a que los tres puntos de la 
-proposición (*-sub) ocurran). Demos un nombre a tales
+de $X$ (pues así estamos forzando a que los tres puntos del
+Teorema \ref{teo: caracterizacion de subespacios}
+ocurran). Demos un nombre a tales
 sumas de elementos de $X$.
 
 \begin{defi}
@@ -530,21 +1148,15 @@ por escalares. Confirmamos nuestras sospechas con el siguiente resultado.
 \begin{prop}
 	\label{prop: caract elementos del subesp generado por X}
 Si $\emptyset \neq X \subseteq V$, entonces
-$\langle X \rangle$ consta de todas las combinaciones lineales
+$span (X)$ consta de todas las combinaciones lineales
 de elementos de $X$, es decir,
 \begin{equation}
 	\label{eq: elementos del generado de X}
-\langle X \rangle = \left\{ \sum_{i=1}^{n} a_{i}x_{i} | \hspace{0.2cm} 
+span (X) = \left\{ \sum_{i=1}^{n} a_{i}x_{i} | \hspace{0.2cm} 
 n \in \IN, x_{i} \in X, a_{i} \in F \hspace{0.2cm} \textit{ para toda }
 1 \leq i \leq n \right\}
 \end{equation}
 \end{prop}
-\marginnote{En inglés, al conjunto de la derecha en 
-\eqref{eq: elementos del generado de X} se le conoce como
-el ``span'' de $X$. La proposición 
-\ref{prop: caract elementos del subesp generado por X}
-nos dice que el span de un conjunto $X$ es el menor subespacio
-que contiene a $X$.}
 \noindent
 \textbf{Demostración.}
 Sea 
@@ -558,7 +1170,7 @@ veamos que $\mathcal{A} = \langle X \rangle$.
 	\item[$\supseteq$]] Claro que $\mathcal{A}$ es subespacio de 
 	$V$ (\hlgray{Ejercicio:} compruebe los detalles!). Además, 
 	$\mathcal{A}$ contiene a $X$ (pues $x = \sum_{i=1}^{1}1_{F} x \in \mathcal{A}$).
-	De esto se deduce que $\langle X \rangle \subseteq \mathcal{A}$.
+	De esto se deduce que $span ( X )\subseteq \mathcal{A}$.
 	
 	
 	\item[$\subseteq$]] Sea ahora
@@ -566,11 +1178,12 @@ veamos que $\mathcal{A} = \langle X \rangle$.
 	de $\mathcal{A}$; mostremos que este es elemento de 
 	\textit{cualquier} subespacio $W$ de $V$ que contenga a 
 	$X$ - de esto podremos concluir la contención deseada, 
-	pues $\langle X \rangle$ \textit{es} la intersección 
+	pues $span ( X )$ \textit{es} la intersección 
 	de tales subespacios $W$.
 	Sea pues $W \leq V$ con $X \subseteq W$. Como cada
 	$x_{i}$ es elemento de $X$, todos serán elementos de 
-	$W$, luego, por el lema REF, 
+	$W$, luego, como $W$ es subespacio de $V$, es cerrado bajo 
+	multiplicaciones escalares y sumas, por lo tanto,  
 	$a_{1} x_{1} + \ldots + a_{n} x_{n} \in W$.
 \end{itemize}
 
@@ -584,8 +1197,8 @@ es decir,
 \begin{align}
 	\label{eq: suma de subespacios}
 \sum_{\alpha \in I} W_{\alpha} := &
-\left\langle \bigcup_{\alpha \in I} W_{\alpha} 
-\right\rangle \nonumber \\
+span \left( \bigcup_{\alpha \in I} W_{\alpha} 
+\right) \nonumber \\
 = & \left\{ a_{1}w_{1} + \cdots +
 a_{n}w_{n}  | \hspace{0.2cm} n \geq 1, a_{i} \in F,
 w_{i} \in \bigcup_{\alpha \in I} W_{\alpha} \right\} \nonumber \\
@@ -623,7 +1236,7 @@ Recapitulemos: dados $W_{1}, W_{2} \leq V$,
 \end{itemize}
 
 \begin{defi}
-Si $X \subseteq V$ es tal que $\langle X \rangle = V$,
+Si $X \subseteq V$ es tal que $span(X) = V$,
 decimos que \textbf{$X$ genera al espacio $V$}.
 \end{defi}
 Es decir, $X$ genera a a $V$ si no hay subespacios propios
@@ -754,12 +1367,13 @@ $U+ W$ es directa si y sólo si $U \cap W = \{ \hat{0} \}$.
 \QEDB
 \vspace{0.2cm}
 
-Note lo siguiente: según la proposición 
-(*-sub), todos los subespacios tienen en común al 
-neutro $\hat{0}$ del espacio, luego, no tiene sentido
+Note lo siguiente: según el Teorema
+\ref{teo: caracterizacion de subespacios},
+todos los subespacios tienen en común al 
+vector cero $\hat{0}$ del espacio, luego, no tiene sentido
 buscar subespacios disjuntos. Lo más disimiles que pueden
 llegar a ser $U, W \leq V$ es que su intersección sea
-$\{ 0 \}$. Esto, según la proposición 
+$\{ 0 \}$. Esto, según la Proposición 
 \ref{prop: suma directa sii interseccion cero}, 
 equivale a que la suma $U + W$ sea directa.
 
@@ -770,13 +1384,14 @@ Suma directa de subespacios
 $\sim$ Unión disjunta de subconjuntos
 \end{center}
 
-Note que en la proposición \ref{prop: suma directa sii interseccion cero}
+Note que en la Proposición \ref{prop: suma directa sii interseccion cero}
 estamos lidiando sólo con dos subespacios. ¿Podemos generalizar
 este resultado para la suma de $n$-subespacios? ¿Será cierto que
 la suma $\sum_{i=1}^{n} W_{i}$ es directa si y sólo si 
 la intersección $\bigcap_{i = 1}^{n} W_{i}$ es $\{ \hat{0} \}$?
 La respuesta es \textbf{no} (c.f. ejercicio
-\ref{ej: de la suma directa}).
+\ref{ej: de la suma directa}). \TODO{Poner la teoría general de suma directa?
+La necesito para el tema de diagonalización.}
 
 
 \section{Caso práctico: Representación de información nutricional}
@@ -864,7 +1479,7 @@ lineales de vectores fruta). La teoría estudiada antes nos asegura que
 
 La pregunta de la nutrióloga queda entonces expresada en ver si ocurre
 \[
-x_{manzana} \in \langle \mathcal{A} - \{ x_{manzana} \} \rangle
+x_{manzana} \in span ( \mathcal{A} - \{ x_{manzana} \} )
 \]
 o no.
 \marginnote{No nos interesan todos los elementos de $\IR^{6}$, sino
@@ -872,30 +1487,30 @@ sólo aquellos que sean combinaciones lineales de vectores fruta;
 estamos reemplazando a nuestro espacio de trabajo $\IR^{6}$
 por $\langle \mathcal{A} \rangle$.}
 
-Observa que los vectores son mucho más que una forma conveniente de 
+Observa que \textbf{los vectores son mucho más que una forma conveniente de 
 almacenar información: podemos hacer operaciones de ellos e
 interpretarlas en el contexto del 
-problema físico planteado.
+problema físico planteado}.
 
 Con las definiciones e ideas que planteamos en los siguientes capítulos,
 podremos 
 \begin{itemize}
-	\item Determinar cuándo existen combinaciones de frutas
+	\item determinar cuándo existen combinaciones de frutas
 	que aporten lo mismo que cierta cantidad de manzanas,
-	\item Decir si hay una única forma o varias de expresar manzanas
-	en términos de combinaciones lineales de frutas específicas
-	\item Usar argumentos de dimensionalidad para determinar
+	\item decir si hay una única forma o varias de expresar manzanas
+	en términos de combinaciones lineales de frutas específicas,
+	\item usar argumentos de dimensionalidad para determinar
 	cuándo subconjuntos de frutas son suficientes para
-	sustituir a todas las demás
+	sustituir a todas las demás,
 \end{itemize}
-
+entre otras cosas.
 Es fácil pensar requerimientos razonables
 que complicarían aún más la situación; por ejemplo, considera que,
 en un escenario realista, 
 \begin{itemize}
-	\item Un paciente podría tener no solo posibles alergias
+	\item un paciente podría tener no sólo posibles alergias
 	como limitantes para definir una dieta, sino también 
-	un presupuesto mensual al que deba apegarse, presupuesto
+	un presupuesto mensual que no pueda sobrepasar, presupuesto
 	que podría reducir aún más las opciones o cantidades
 	de fruta que puede consumir (por ejemplo, esto podría implicar
 	que combinaciones lineales que contengan al vector
@@ -914,7 +1529,8 @@ en un escenario realista,
 		por ejemplo, las frutas a las que es alérgico (o que no le
 		gustan, y quiere evitar en su dieta) y su presupuesto mensual.
 		Esto cambia el espacio de combinaciones lineales a considerar
-		para cada uno, y las combinaciones lineales aceptables.}
+		para cada uno, por lo tanto, las combinaciones lineales aceptables
+		para construirle una dieta.}
  	\end{measuredfigure}
  \end{figure}
 

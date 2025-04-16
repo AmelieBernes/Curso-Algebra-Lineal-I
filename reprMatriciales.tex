@@ -1,17 +1,54 @@
 \chapter{Representaciones matriciales de transformaciones lineales}
+
+
+\begin{signquote}{Mac Lane, 1954}
+	The proper treatment of calculus for functions of 
+	several variables requires vector ideas; the budding statistician and
+	the coming physicist need them; modern 
+	analysis is unthinkable without the notion of linear
+	dependence and all that flows from it. Throughout these
+	courses the infusion of a geometrical point of view is of paramount 
+	importance. A vector is geometrical; it is an element of a vector space,
+	defined by suitable axioms - whether the scalars be real numbers or
+	elements of a general field. A vector is not an n-tuple of numbers
+	until a coordinate system has been chosen. Any teacher and any
+	text book which starts with the idea that vectors are
+	n-tuples is committing a crime for which the proper punishment is ridicule.
+	The n-tuple idea is not ``easier'', it is harder; it is not clearer, it is
+	more misleading. 
+\end{signquote}
+\marginnote{Podrá notar que, en lo que sigue, siempre que se defina
+	un concepto para transformaciones lineales, se intentará traducir y relacionar
+	con uno para matrices. Estaremos constantemente estudiando la relación entre
+	espacios de transformaciones lineales con espacios matriciales.}
+	
+\vspace{1cm}
+
+\begin{signquote}{Keith van Rijsbergen}
+	Now imagine that the query is
+	simply an abstract vector in the space, we would still have to define it
+	with respect to the basis of the space, but it would be up to us, or the
+	user, to refer the objects in the space to different bases depending on
+	their point of view. A change of basis constitutes a change of point of
+	view.
+\end{signquote}
+
+
+
+\label{chapter: representaciones matriciales de transformaciones lineales}
 Desarrollada la teoría de transformaciones lineales en
 el capítulo anterior, nos proponemos ahora usar la propiedad
-universal de las bases (c.f. teorema
+universal de las bases (c.f. Teorema
 \ref{teo: propiedad univ de las bases}) para representar 
 transformaciones lineales entre espacios vectoriales finito dimensionales
-como matrices. 
+con matrices. 
 
-Mostraremos que
 \begin{itemize}
-	\item fijando bases en los espacios de salida y de llegada,
+	\item Mostraremos que, 
+	fijando bases en los espacios de salida y de llegada,
 	podremos establecer una biyección (que de hecho será un isomorfismo)
 	que identificará una transformación lineal entre estos espacios
-	con una matríz. 
+	con una matriz. 
 	\item Puesto que esta asociación preserva estructura, podremos 
 	realizar operaciones con matrices (que son objetos sencillos de 
 	almacenar y operar en una computadora) e interpretarlas como
@@ -47,7 +84,7 @@ es un $F-$espacio vectorial.
 \end{prop}
 \noindent
 \textbf{Demostración.}
-Ejercicio. Como sugerencia, considere a 
+\hlgray{Ejercicio.} Como sugerencia, considere a 
 \[
 X = 
 \{ T: V \longrightarrow W  | \hspace{0.2cm} \textit{ T es función} \}.
@@ -64,19 +101,37 @@ sí mismo.
 En $W$ no se tiene definida una multiplicación, por lo que no tendría
 sentido definir el produco de transformaciones lineales
 puntualmente, sin embargo, siempre podemos componer funciones:
-si $T : V_{1} \longrightarrow V_{2}$, $U: V_{2} \longrightarrow V_{3}$,
+recuerda que, 
+si $T : V_{1} \longrightarrow V_{2}$, $U: V_{2} \longrightarrow V_{3}$
+son transformaciones lineales, 
 su composición $ U \circ T : V_{1} \longrightarrow V_{3}$ se define como
 \[
 (U \circ T)(v) = U(T(v)), \hspace{0.3cm} v \in V_{1}.
 \]
-Se demuestra que esta es una transformación lineal.
+\begin{prop}
+	La composición de transformaciones lineales es una transformación lineal.
+\end{prop}
+\textbf{Demostración.}
+\hlgray{Ejercicio.}
+\QEDB
+\vspace{0.2cm}
+
+
 
 \section{El isomorfismo $[\cdot]_{\beta}$}
-\hlpink{base ordenada def.}
-\marginnote{Para no complicar la notación seguiremos denotando
-a bases ordenadas como conjuntos, pero a partir de ahora se
-debe entender que el orden en el que se enlistan los elementos de 
-una base importa. Por ``base'' entenderemos ``base ordenada''.}
+A partir de ahora, fijada una base $\beta$ de un 
+$F-$espacio vectorial $V$, nos interesarán no sólo sus elementos, sino
+también el orden en el que estos se enlistan.
+Por eso, ahora que digamos ``base'', nos estaremos refiriendo
+a una ``base ordenada''. Por ejemplo,
+\[
+\beta_{1} = \{ (1, 0), (0, 1) \} \hspace{0.2cm}
+\textit{ y }
+\hspace{0.2cm}
+\beta_{1} = \{ (0, 1), (1, 0) \}
+\]
+son, como conjuntos, iguales, pero como bases
+ordenadas de $\IR^{2}$ son distintas.
 
 \begin{defi}
 Sea $V$ un $F-$espacio vectorial
@@ -104,18 +159,20 @@ $\beta$ es única (luego, a cada vector le estamos asignando una
 y sólo una columna ordenada).
 De hecho, $[\cdot]_{\beta}$
 es la transformación lineal usada en 
-la demostración de la proposición
+la demostración de la Proposición
 \ref{prop: dim V n sii V isomorfo a Rn} para demostrar que,
 si $V$ tiene dimensión $n$, entonces es isomorfo a 
-$\IR^{n}$. Usando entonces a la base $\beta$ de $V$, estamos
+$\IF^{n}$. \textbf{Usando entonces a la base $\beta$ de $V$, estamos
 identificando a cada vector de $V$ con una $n-$tupla via
-este isomorfismo. Esto es útil pues, aunque los elementos del
-espacio original $V$ no sean vectores, si $V$ es
-de dimensión finita, los podemos
-identificar como tal.
+este isomorfismo}. 
+Esto es útil pues, aunque los elementos del
+espacio original $V$ no sean elementos de $\IR^{n}$, si $V$ es
+de dimensión finita, ¡los podemos
+identificar como tal!
 
 \begin{prop}
-Sea $\beta = {v_{1}, v_{2}, \ldots, v_{n}}$ base de $V$,
+	Sean $V$ un $F-$espacio vectorial de dimensión $n$, 
+$\beta = \{ v_{1}, v_{2}, \ldots, v_{n} \}$ una base de $V$, y 
 $[\cdot]_{\beta}: V \longrightarrow \IR^{n}$ la transformación lineal
 dada por 
 \eqref{eq: vector coordenado de x}.
@@ -131,15 +188,42 @@ dada por
 
 Note que la identificación \eqref{eq: vector coordenado de x}
 de un vector del espacio con un elemento de $\IR^{n}$ depende de 
-la base $\beta$ fijada. Es decir, si $\gamma$ es otra base 
-del espacio, $[x]_{\beta} \neq [x]_{\gamma}$, y 
-el que $[x]_{\beta} = [y]_{\gamma}$ no implica que $x$ y $y$
-sean iguales. \hlgray{Ejercicio: de un ejemplo que ejemplifique
-esta situación.}
+la base $\beta$ fijada. 
 
-\hlpink{Terminar de poner aquí lo de las fotos. Prefiero hablar
-en términos de este isomorfismo en lo que sigue, entonces tengo
-que completar esta sección.}
+\hlgray{Ejercicio:} 
+Sean $V$ un $F-$espacio vectorial finito dimensional, 
+$\beta, \gamma$ bases de este distintas entre sí.
+Demuestre que, 
+\begin{itemize}
+	\item existe $x \in V$ tal que 
+	$[x]_{\beta} \neq [x]_{\gamma}$, y que 
+	\item $[x]_{\beta} = [y]_{\gamma}$ no necesariamente implica 
+	$x = y$.
+\end{itemize}
+
+
+\begin{nota}
+	Fijada una base $\beta = \{ v_{1}, \ldots , v_{n} \}$ de $V$, 
+	es importante recordar la definición del isomorfismo $[\cdot]_{\beta}$;
+	\marginnote{En \eqref{eq: def del iso asociado a beta}, 
+	nota que la ecuación de la derecha es en $V$, y la ecuación de la izquierda
+	es en $F^{n}$.}
+	\begin{equation}
+			\label{eq: def del iso asociado a beta}
+			\forall x \in V: 
+			\hspace{0.2cm}
+			[x]_{\beta} = (a_{1}, \ldots , a_{n}) \hspace{0.2cm}
+			\textit{si y sólo si } \hspace{0.2cm}
+			x = a_{1} v_{1} + \cdots + a_{n} v_{n},
+	\end{equation}
+	pues es con ella que recuperamos al vector $x \in V$
+	a partir de la $n-$tupla $(a_{1}, \ldots , a_{n}) \in F^{n}$.
+\end{nota}
+
+\hlgray{Ejercicio:} resuelve los ejercicios 1 a 5
+de la lista \ref{sec: ejercicios iv}.
+
+
 
 \section{Representación matricial de una transformación lineal}
 
@@ -157,7 +241,7 @@ W, \hspace{0.2cm} dim(V) = n,\gamma = \{ w_{1}, \ldots, w_{m} \}
 Recuerde que, si $T: V \longrightarrow W$ es una transformación lineal,
 entonces
 \begin{itemize}
-	\item Por el teorema fundamental de las bases 
+	\item Por el Teorema fundamental de las bases 
 	\ref{teo: propiedad univ de las bases}, 
 	la transformación $T$ queda completamente
 	\marginnote{En esta discusión, ``$i$'' es la variable con la que
@@ -183,9 +267,6 @@ entonces
 	\hspace{0.2cm} 1 \leq i \leq n.
 	\end{equation}
 \end{itemize}
-\begin{marginfigure}
-\includegraphics[scale= 1.9]{19} 
-\end{marginfigure}
 Así, una vez fijadas las bases $\beta$ y $\gamma$, 
 \textbf{la transformación lineal $T$ queda completamente determinada
 por los $m \times n$ escalares $a_{ji}$, con $1 \leq i \leq n$ y
@@ -202,6 +283,9 @@ matriz:
 	a_{m1} & a_{m2} & \ldots & a_{mn} 
 	\end{pmatrix}.
 \end{equation}
+\begin{marginfigure}
+	\includegraphics[scale= 1.9]{19} 
+\end{marginfigure}
 Note que la $i-$ésima columna de $[T]_{\beta}^{\gamma}$
 es el vector columna $[T(v_{i})]_{\gamma}$. Entonces,
 \begin{itemize}
@@ -223,23 +307,28 @@ es el vector columna $[T(v_{i})]_{\gamma}$. Entonces,
 	\includegraphics[scale = 2.7]{20} 
 \end{figure}	
 
+
+
 \section{El isomorfismo $\Phi_{\beta}^{\gamma}$}
+\label{sect: iso phi}
+\hlpink{Agregar nota de iso de anillos: Golan.}
+
 
 Fijadas bases $\beta = \{ v_{j}  | \hspace{0.2cm} 1 \leq j \leq n \}
- \subseteq V$ y $\gamma 
-= \{ w_{k}  | \hspace{0.2cm} 1 \leq k \leq n \} 
- \subseteq W$ de dos 
-$F-$espacios finito dimensionales, se puede establecer una biyección
+\subseteq V$ y $\gamma 
+= \{ w_{k}  | \hspace{0.2cm} 1 \leq k \leq m \} 
+\subseteq W$ de dos 
+$F-$espacios finito dimensionales, vamos a establecer una biyección
 entre
 \begin{itemize}
 	\item el espacio $\mathcal{L}(V, W)$ de transformaciones lineales
 	de $V$ en $W$ y 
-	\item el espacio de matrices $M_{m \times n}(F)$;
+	\item el espacio de matrices $M_{m \times n}(F)$.
 \end{itemize}
-vamos a denotar por 
+Denotemos por 
 $\Phi_{\beta}^{\gamma}$ a la función que a cada 
 transformación lineal de $V$ en $W$ le asigna su representación
-matricial respecto a $\beta$ y $\gamma$, i.e.
+matricial respecto a $\beta$ y $\gamma$, es decir, 
 \[
 \Phi_{\beta}^{\gamma} : \mathcal{L}(V, W) \longrightarrow M_{m \times n}(F)
 \]
@@ -247,54 +336,54 @@ matricial respecto a $\beta$ y $\gamma$, i.e.
 \Phi_{\beta}^{\gamma}(T) = [T]_{\beta}^{\gamma}.
 \]
 
-Del teorema fundamental de las bases se sigue fácilmente
-el que $\Phi_{\beta}^{\gamma}$ sea biyectiva.
+Del Teorema fundamental de las bases se sigue de inmediato
+que $\Phi_{\beta}^{\gamma}$ 
+la función 
+es una biyección. 
 
 \begin{prop}
-La función $\Phi_{\beta}^{\gamma}$ es una biyección.
+	La función $\Phi_{\beta}^{\gamma}$ es una biyección.
 \end{prop}
 \noindent
 \textbf{Demostración.}
 \begin{itemize}
 	\item \textbf{Inyectividad de $\Phi_{\beta}^{\gamma}$}:
 	Sean $T, U : V \longrightarrow W$ lineales tales que 
+	\marginnote{En la demostración de la inyectividad de $\Phi_{\beta}^{\gamma}$,
+		queremos inferir una igualdad de funciones a partir de una igualdad de matrices.}
 	\[
 	[T]_{\beta}^{\gamma} = \Phi_{\beta}^{\gamma}(T)
 	= \Phi_{\beta}^{\gamma}(T) = [U]_{\beta}^{\gamma}.
 	\]
 	El que las matrices $[T]_{\beta}^{\gamma}$ y 
-$[U]_{\beta}^{\gamma}$ sean iguales significa que 
-\[
-\forall v \in \beta : \hspace{0.2cm} T(v) = U(v)
-\]
-pues la $j-$ésima columna de esta matriz da los coeficientes 
-de la combinación lineal en términos de $\gamma$ igual a $T$ evaluada en el
-$j-$ésimo vector de la base $\beta$. Así, $T$ y $U$ coinciden en la 
-base $\beta$ de $V$, luego, según el corolario 
-\ref{cor: del teor fund bases}, coinciden.
+	$[U]_{\beta}^{\gamma}$ sean iguales significa que 
+	\[
+	\forall v \in \beta : \hspace{0.2cm} T(v) = U(v),
+	\]
+	pues la $j-$ésima columna de la matriz
+	$[T]_{\beta}^{\gamma}$ (respectivamente, de 
+	$[U]_{\beta}^{\gamma}$), 
+	da los coeficientes 
+	de la combinación lineal en términos de $\gamma$ igual a $T$ 
+	(respectivamente, $U$)
+	evaluada en el
+	$j-$ésimo vector de la base $\beta$. Así, $T$ y $U$ coinciden en la 
+	base $\beta$ de $V$, luego, según el Corolario 
+	\ref{cor: del teor fund bases}, coinciden.
 	\item \textbf{Suprayectividad de $\Phi_{\beta}^{\gamma}$}:
-	sea $A = (a_{ij}) \in M_{m \times n}(F)$. Por el teorema fundamental 
+	sea $A = (a_{ij}) \in M_{m \times n}(F)$. Por el Teorema fundamental 
 	de las bases, 
 	existe una única
-transformación lineal tal que 
-\[
-T(v_{j}) = \sum_{k = 1}^{m} a_{kj} w_{j}, \hspace{0.3cm}
-1 \leq j \leq n.
-\]
-Dicha $T$ es tal que $[T]_{\beta}^{\gamma} = A$.
+	transformación lineal tal que 
+	\[
+	T(v_{j}) = \sum_{k = 1}^{m} a_{kj} w_{j}, \hspace{0.3cm}
+	1 \leq j \leq n.
+	\]
+	Dicha $T$ es tal que $[T]_{\beta}^{\gamma} = A$.
 \end{itemize}
 
 \QEDB
 \vspace{0.2cm}
-
-
-\begin{cor}
-Si $T: V \longrightarrow V$ es una transformación lineal
-tal que $[T]_{\beta}^{\beta} = Id_{n}$, entonces $T$ es la función
-identidad.
-\end{cor}
-
-
 
 
 
@@ -306,23 +395,44 @@ $[T]_{\beta}^{\gamma}$, la $j-$ésima columna corresponde al
 $j-$ésimo vector de la base $\beta$, luego, el orden en el que se
 enlistan los elementos de $\beta$ importa (es cierto que un cambio
 de orden en los elementos de un conjunto no afecta su identidad,
-pero el cambiar el orden de las filas o columnas de una matriz la 
+pero, el cambiar el orden de las entradas de una matriz 
+definitivamente la 
 altera).
+El orden de las columnas de una representación matricial 
+$A$ está directamente relacionado con el orden de los vectores en 
+una base ordenada.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 2.3]{ 31} 
+\end{figure}	
+
 
 En la siguiente sección desarrollaremos la teoría suficiente
 para demostrar que, más que una biyección, $\Phi_{\beta}^{\gamma}$
 es un isomorfismo. Esto implica que el espacio
 $\mathcal{L}(V, W)$ de transformaciones lineales entre
-dos espacios finito dimensionales es 
-(salvo isomorfismo) un espacio de matrices. En lo que sigue
-seguiremos estudiando y explotando la relación entre dos espacios,
+dos espacios finito dimensionales es, 
+salvo isomorfismo, un espacio de matrices. En lo que sigue,
+seguiremos estudiando y explotando la relación entre 
+estos 
+dos espacios,
 para interpretar las operaciones que realicemos en uno en
 términos de operaciones en el otro espacio (pues, para las aplicaciones,
 es muchísimo más sencillo trabajar con matrices a lidiar
 con transformaciones lineales entre espacios que, a pesar de ser
 finito dimensionales, pueden ser complicados).
 
-\section{Operaciones entre transformaciones lineales con sus representaciones matriciales}
+
+
+\section{Operaciones entre transformaciones lineales usando sus representaciones matriciales}
+
+
+Empecemos estableciendo la linealidad de la biyección
+$\Phi_{\beta}^{\gamma}$ estudiada en 
+la Sección \ref{sect: iso phi}.
+
 
 \begin{prop}
 Sean
@@ -332,13 +442,107 @@ $\gamma = \{ w_{1}, \ldots , w_{m}\} \subseteq W$ bases de estos.
 \marginnote{Nota que el lado izquierdo de 
 \eqref{eq: suma de matrices transf lin} involucra una suma de funciones,
 mientras que el lado derecho es una suma de matrices.}
-Para cualesquiera $T, U :V \longrightarrow W$, 
+Para cualesquiera $T, U :V \longrightarrow W$
+y $\lambda \in F$, 
 \begin{equation}
 	\label{eq: suma de matrices transf lin}
 	[T + U]_{\beta}^{\gamma} = [T]_{\beta}^{\gamma} + 
 [U]_{\beta}^{\gamma}.
 \end{equation}
+\begin{equation}
+	\label{eq: mult escalar de matrices transf lin}
+	[\lambda T]_{\beta}^{\gamma} = \lambda [T]_{\beta}^{\gamma}.
+\end{equation}
 \end{prop}
+\textbf{Demostración.}
+Digamos que
+\[
+[U]_{\gamma}^{\delta} = 
+\begin{pmatrix}
+	a_{11} & a_{12} & \ldots & a_{1n} \\
+	a_{21} & a_{22} & \ldots & a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{m1} & a_{m2} & \ldots & a_{mn}
+\end{pmatrix},
+\hspace{0.2cm}
+[T]_{\beta}^{\gamma} = 
+\begin{pmatrix}
+	b_{11} & b_{12} & \ldots & b_{1n} \\
+	b_{21} & b_{22} & \ldots & b_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	b_{m1} & b_{m2} & \ldots & b_{mn}
+\end{pmatrix}.
+\]
+De estas representaciones matriciales inferimos que,
+para toda $1 \leq j \leq n$,
+\[
+U(v_{j}) = \sum_{k=1}^{m} a_{kj} w_{k},
+\hspace{0.2cm}
+T(v_{j}) = \sum_{k=1}^{m} b_{kj} w_{k},
+\]
+luego,
+\[
+(T + U)(v_{j}) = \sum_{k=1}^{m} b_{kj} w_{k} +
+\sum_{k=1}^{m} a_{kj} w_{k}
+= \sum_{k=1}^{m} (b_{kj} + a_{kj}) w_{k},
+\]
+y
+\[
+(\lambda T)(v_{j}) = 
+\lambda \left( \sum_{k=1}^{m} b_{kj} w_{k} \right) 
+= \sum_{k=1}^{m} (\lambda b_{kj}) w_{k},
+\]
+por lo tanto,
+
+\[
+[T + U]_{\beta}^{\gamma} = 
+\begin{pmatrix}
+	b_{11} + a_{11} & b_{12} + a_{12} & \ldots & b_{1n} + a_{1n} \\
+	b_{21} + a_{21} & b_{22} + a_{22} & \ldots & b_{2n} + a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	b_{m1} + a_{m1} & b_{m2} + a_{m2} & \ldots & b_{mn} + a_{mn}
+\end{pmatrix}
+= [T]_{\beta}^{\gamma} + [U]_{\beta}^{\gamma},
+\]
+y 
+\[
+[\lambda T]_{\beta}^{\gamma}
+= 
+\begin{pmatrix}
+	\lambda b_{11} & \lambda b_{12} & \ldots & \lambda b_{1n} \\
+	\lambda b_{21} & \lambda b_{22} & \ldots & \lambda b_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	\lambda b_{m1} & \lambda b_{m2} & \ldots & \lambda b_{mn}
+\end{pmatrix}
+\]
+\QEDB
+\vspace{0.2cm}
+
+\marginnote{
+Si $V$ y $W$ son finito dimensionales, 
+$\mathcal{L}(V, W)$ es un espacio de funciones 
+finito dimensional.
+}
+
+\begin{cor}
+	Sean $V$, $W$ dos $F-$espacios vectoriales, con 
+	$dim(V) = n$, $dim(W) = m \in \IN$. Si 
+	$\beta \subseteq V$, $\gamma \subseteq W$
+	son bases de estos espacios, entonces, la función
+	\[
+	\Phi_{\beta}^{\gamma} : \mathcal{L}(V, W) \longrightarrow M_{m \times n}(F)
+	\]
+	\[
+	\Phi_{\beta}^{\gamma}(T) = [T]_{\beta}^{\gamma}.
+	\]
+	es un isomorfismo.
+\end{cor}
+
+\begin{cor}
+	Si $dim(V) = n, dim(W) = m \in \IN$, entonces
+	$dim(\mathcal{L}(V, W)) = m n $.
+\end{cor}
+
 
 \begin{prop}
 	\label{prop: calculo de composicion de transf a partir de producto de matr}
@@ -540,14 +744,19 @@ x_{n} T(v_{n})]_{\gamma} \\
 \QEDB
 \vspace{0.2cm}
 
+
+\hlgray{Ejercicio:} demuestra los siguientes resultados.
 \begin{prop}
-Si $\beta, \beta' \subseteq V$ son bases de $V$, entonces 
-\begin{itemize}
-	\item $[Id]_{\beta}^{\beta'} = I_{n}$ si y sólo si $\beta = \beta'$
-	\hlpink{Mejor poner esto antes.}
-	\item $([Id]_{\beta}^{\beta'})^{-1} = [Id]_{\beta'}^{\beta}$.
-\end{itemize}
+	Si $V$ es finito dimensional y 
+	$\beta, \beta' \subseteq V$ son bases de $V$, entonces 
+	\begin{itemize}
+		\item $[Id]_{\beta}^{\beta'} = I_{n}$ si y sólo si $\beta$
+		y $\beta'$ son iguales como bases ordenadas.
+		\item La matriz $[Id]_{\beta}^{\beta'}$ es invertible, y 
+		$$([Id]_{\beta}^{\beta'})^{-1} = [Id]_{\beta'}^{\beta}.$$
+	\end{itemize}
 \end{prop}
+
 
 \section{Transformaciones lineales de la forma $L_{A}$}
 Sea $A \in M_{m \times n} (F)$ una matriz de $m$ filas y 
@@ -564,7 +773,7 @@ L_{A}(x) = Ax,
 o sea, $L_{A}$ es la función ``multiplicar a $A$ por la izquierda
 de vectores de $F^{n}$''.
 
-Usando esta nueva notación, podemos establecer el teorema
+Usando esta nueva notación, podemos establecer el Teorema
 \ref{teo: calculando Tx en terminos de representaciones matriciales} en 
 términos del siguiente diagrama de transformaciones lineales:
  
@@ -652,7 +861,7 @@ $[T]_{\beta}^{\gamma}$ es invertible.
 \textbf{Demostración.}
 \begin{itemize}
 	\item[$\Rightarrow$)] Supongamos que $T$ es un isomorfismo, es decir,
-	que es invertible. Entonces, según la proposición 
+	que es invertible. Entonces, según la Proposición 
 	\ref{prop: isomorfo implica misma dimension}, $dim(V) = dim(W)$.
 	Sean $\beta = \{ v_{j}  | \hspace{0.2cm} 1 \leq j \leq n \}$ y
 	$\gamma \{ w_{j}  | \hspace{0.2cm} 1 \leq j \leq n \}$ bases de $V$
@@ -724,13 +933,6 @@ $\Phi_{\beta}^{\gamma}$.
 \QEDB
 \vspace{0.2cm}
 
-\begin{cor}
-Si $dim(V) = n$ y $dim(W) = m$, entonces el espacio 
-$\mathcal{L}(V, W)$ de transformaciones lineales de $V$ a $W$
-es finito dimensional, de hecho,
-$dim(\mathcal{L}(V, W)) = mn$.
-\end{cor}
-
 \section{Ejemplos}
 Sea
 \[
@@ -785,31 +987,14 @@ a & b \\
 \end{pmatrix} = 
 (a, b, c)
 \]
-
+\hlpink{Terminar.}
 \section{Cambio de sistema coordenado}
-
-\begin{signquote}{Mac Lane, 1954}
-    The proper treatment of calculus for functions of 
-several variables requires vector ideas; the budding statistician and
-the coming physicist need them; modern 
-analysis is unthinkable without the notion of linear
-dependence and all that flows from it. Throughout these
-courses the infusion of a geometrical point of view is of paramount 
-importance. A vector is geometrical; it is an element of a vector space,
-defined by suitable axioms - whether the scalars be real numbers or
-elements of a general field. A vector is not an n-tuple of numbers
-until a coordinate system has been chosen. Any teacher and any
-text book which starts with the idea that vectors are
-n-tuples is committing a crime for which the proper punishment is ridicule.
-The n-tuple idea is not ``easier'', it is harder; it is not clearer, it is
-more misleading. 
-\end{signquote}
 
 
 Ya ha quedado claro el uso de una base en un $F-$espacio 
 vectorial $V$; estas actuan como un
 \textbf{sistema de coordenadas}, pues, como se estableción
-en el teorema \ref{teo: equiv de base}
+en el Teorema \ref{teo: equiv de base}
 (resultado usado una y otra vez en el desarrollo
 de la teoría anterior), si $\beta$ es base de $V$,
 dado $x \in V$ \textit{cualquiera}, existen
@@ -1218,6 +1403,7 @@ donde $Q= [Id_{V}]_{\beta}^{\beta'}$.
 p. 239 Friedb.}
 
 \begin{defi}
+	\label{def: matrices similares}
 Sean $A, B \in M_{n \times n}(F)$. Decimos que las matrices $A$ y $B$
 son \textbf{similares} si existe $Q \in M_{n \times n}(F)$ invertible tal que
 \[
@@ -1233,6 +1419,7 @@ sí.}
 \end{center}
 No es difícil demostrar que la relación ``ser similar con''
 es de equivalencia:
+
 \noindent
 \hlgray{Ejercicio:} Demuestra que la relación en el conjunto
 de las matrices cuadradas $n \times n$ dada por
@@ -1252,8 +1439,21 @@ es de equivalencia, es decir, que
 	A \sim B \wedge B \sim C \Rightarrow A \sim C$.
 \end{itemize}
 
-Como toda relación de equivalencia, esta induce una partición
-en el conjunto $M_{n \times n}(F)$. 
+Como toda relación de equivalencia
+en el conjunto $M_{n \times n}(F)$.
+esta induce una partición
+en él. 
+
+\begin{notacion}
+	Si $A \in M_{n \times n}(F)$, por $\overline{A}$
+	denotaremos a la clase de equivalencia de $A$ bajo la relación
+	``ser similar a'';
+	\[
+	\overline{A} = \{ B \in M_{n \times n}(F) : \hspace{0.2cm} 
+	A \sim B
+	\}.
+	\]
+\end{notacion}
 
 
 \begin{marginfigure}
@@ -1265,24 +1465,30 @@ Sea $V$ un $F-$espacio vectorial
 con $dim(V) = n$ (por ejemplo, $V = F^{n}$).
 Si $T: V \longrightarrow V$ es una transformación lineal y 
 $\beta \subseteq V$ es una base para $V$, consideremos a la
-matriz $A = [T]_{\beta}^{\beta}$. Si queremos formar a la clase
-de equivalencia de $A$ bajo la relación 
-\eqref{eq: relacion equiv ser similar a}, según el corolario
-\ref{cor: T de V en V cambio de base}, debemos considerar 
-a matrices de la forma 
-\begin{equation}
-	\label{eq: formando clase de equiv sim}
-	[T]_{\beta'}^{\beta'}, \hspace{0.2cm} \textit{ con }
-\beta' \subseteq V \textit{ base de } V.
-\end{equation}
-La pregunta ahora es, ¿la clase de equivalencia de $A$ consta
-sólo de las matrices de la forma \eqref{eq: formando clase de equiv sim}?
-Damos una respuesta afirmativa en el siguiente resultado.
+matriz $A = [T]_{\beta}^{\beta}$. 
+Según el Corolario \ref{cor: T de V en V cambio de base},
+si $\beta' \subseteq V$ es otra base cualquiera de $V$,
+\begin{align*}
+	[T]_{\beta'}^{\beta'} = Q^{-1} [T]_{\beta}^{\beta} Q = 
+	Q^{-1} A Q,
+\end{align*}
+donde $Q = [Id_{V}]_{\beta'}^{\beta}$ es en efecto invertible
+(pues $Id_{V}: V \longrightarrow V$ lo es).
+Esto significa que 
+\[
+\{
+[T]_{\beta'}^{\beta'} : \hspace{0.2cm} \beta' \subseteq V
+\hspace{0.1cm} \textit{ es base }
+\} \subseteq \overline{A}.
+\]
+¿Se tiene también la otra inclusión?
+Damos una respuesta afirmativa en el siguiente
 
 \begin{teo}
 	\label{teo: similar a repr matricial de T sii tambien es repr matr de T}
 	Sea $V$ un $F-$espacio vectorial $n-$dimensional, $T: V \longrightarrow V$
-	lineal. Si $\beta \subseteq V$ es base y $A = [T]_{\beta}^{\beta}$, 
+	lineal. Si $$\beta = \{ v_{1}, \ldots , v_{n} \}
+	\subseteq V$$ es base y $A = [T]_{\beta}^{\beta}$, 
 	entonces,
 	\[
 	\forall B \in M_{n \times n}(F): \hspace{0.2cm} A \sim B \hspace{0.2cm}
@@ -1299,7 +1505,58 @@ Damos una respuesta afirmativa en el siguiente resultado.
 \end{teo}
 \noindent
 \textbf{Demostración.}
-\hlpink{en papel.}
+Sea $B \in M_{n \times n}(F)$ similar a $A$; digamos pues que 
+$Q \in M_{n \times n}(F)$ es una matriz invertible tal que 
+\begin{equation}
+	\label{eq: B q menos uno a q}
+	B = Q^{-1} A Q = Q^{-1} [T]_{\beta}^{\beta} Q. 
+\end{equation} 
+Usando la matriz $Q$ vamos a construir una base para $V$; 
+definamos a los vectores
+
+\begin{equation}
+	\label{eq: vj prima a partir de base y matr invertible Q}
+	v_{j}' := q_{1j} v_{1} + q_{2j}v_{2} + \cdots + q_{nj} v_{n}, 
+	\hspace{0.2cm} 1 \leq j \leq n.
+\end{equation}
+O sea, tomamos a las columnas de $Q$ como listas de coeficientes.
+Sea $\beta' = \{v_{1}', \ldots , v_{n}' \}$.
+Si $a_{1}, \ldots , a_{n} \in F$ tales que 
+\begin{align*}
+	0 = & a_{1}v_{1}' + \cdots + a_{n}v_{n}' \\
+	= & a_{1}(q_{11}v_{1} + \cdots + p_{n1}v_{n}) + \cdots +
+	a_{n}(q_{1n}v_{1} + \cdots + p_{nn}v_{n}) \\
+	= & (a_{1}p_{11} + \cdots a_{n}p_{1n}) v_{1} + \cdots +
+	(a_{1}p_{n1} + \cdots a_{n}p_{nn}) v_{n},
+\end{align*}
+luego, como $\beta$ es l.i., tenemos que los coeficientes de
+la combinación lineal anterior son todos cero, hecho que puede
+reescribirse como la siguiente ecuación matricial;
+\[
+Q a = 0_{F^{n}}, \hspace{0.2cm}
+a := \begin{pmatrix}
+	a_{1} \\
+	\vdots \\
+	a_{n}
+\end{pmatrix}.
+\]
+Por ser $Q$ invertible, de esta última igualdad se deduce que 
+$a$ es el vector cero de $F^{n}$. De esto se concluye que 
+$\beta'$ es l.i., luego, como tiene cardinalidad $n$
+(el que sea l.i. implica que los vectores $v_{j}'$ son 
+distintos entre sí), es base de $V$. La definición 
+\eqref{eq: vj prima a partir de base y matr invertible Q} de 
+los vectores $v_{i}'$ se reinterpreta ahora como
+\begin{equation}
+	\label{eq: Q es id de beta prima a beta.}
+	Q = [Id]_{\beta'}^{\beta}.
+\end{equation}
+Sustituyendo a \eqref{eq: Q es id de beta prima a beta.} en 
+\eqref{eq: B q menos uno a q}, concluimos que 
+\begin{align*}
+	B = [Id]_{\beta}^{\beta'} [T]_{\beta}^{\beta} [Id]_{\beta'}^{\beta}
+	= [T]_{\beta'}^{\beta'}.
+\end{align*}
 
 \QEDB
 \vspace{0.2cm}
@@ -1401,6 +1658,7 @@ de la transformación lineal.
 
 
 \begin{prop}
+	\label{prop: rango de transf lineal es rango de repr matr cualquiera}
 Si $T: V \longrightarrow W$ lineal, $\beta \subseteq V$,
 $\gamma \subseteq W$ bases, entonces,
 \begin{equation}
@@ -1420,7 +1678,6 @@ T = [\cdot]_{\gamma}^{-1} \circ L_{A} \circ [\cdot]_{\beta}.
 \]
 Puesto que $[\cdot]_{\gamma}^{-1}$ y $[\cdot]_{\beta}$ son ambos
 isomorfismos, según la proposición anterior, terminamos.
-\hlpink{También puedes checar esto directamente.}
 \QEDB
 \vspace{0.2cm}
 
@@ -1434,5 +1691,77 @@ Tales ceros pueden formarse al efectuar operaciones elementales.
 \hlpink{Aquí recordamos lo que son operaciones elementales en filas y
 columnas, y las identificamos como hacer multiplicaciones (dependiendo de 
 fila o col., por derecha o por izquierda) con matrices elementales.}
-Mostremos que estas no afectan el rango de una matriz (ya, pues es 
-composición con iso).
+
+\begin{defi}
+Fijado $n \in \IN$, una \textbf{matriz elemental} es una matriz
+que se obtiene al realizar una operación elemental en filas o columnas
+de la matriz identidad $I_{n}$.
+\end{defi}
+Si $A \in M_{m \times n}(F)$, entonces
+\begin{itemize}
+	\item para realizar una operación elemental en las columnas
+	de $A$, hay que multiplicar por la derecha de $A$ por la
+	matriz elemental obtenida al hacer esa operación elemental
+	en la identidad $I_{n}$.
+	\item Dualmente, para realizar una operación elemental en 
+	las filas de $A$, hay que multiplicar por la izquierda de $A$
+	por la matriz elemental obtenida al hacer esa operación elemental 
+	en la identidad $I_{m}$.
+\end{itemize}
+
+\[
+\begin{pmatrix}
+a & b & c \\
+d & e & f
+\end{pmatrix}
+\cdot 
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{pmatrix} = 
+\begin{pmatrix}
+a & c & b \\
+d & f & e
+\end{pmatrix}.
+\]
+
+\[
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix} \cdot
+\begin{pmatrix}
+a & b & c \\
+d & e & f
+\end{pmatrix} =
+\begin{pmatrix}
+d & e & f \\
+a & b & c
+\end{pmatrix}.
+\]
+
+Observa que, realizar operaciones elementales en 
+una matriz $A \in M_{m \times n}$ no afecta entonces su rango, pues,
+si $E$ es la correspondiente matriz elemental,
+como $L_{E}: F^{m} \longrightarrow F^{m}$ es invertible,
+\marginnote{En efecto, si $\beta$ es la base canónica de $F^{m}$, 
+$[L_{E}]_{\beta}^{\beta} = E$ es una matriz invertible, luego, 
+la transformación lineal $L_{E}$ es invertible.}
+\[
+Rango(A) = Rango(L_{A}) = 
+Rango(L_{E} \circ L_{A}) = Rango(L_{E \cdot A}) = Rango(E \cdot A).
+\]
+
+\begin{ejem}
+\hlgray{Ejercicio:}
+Modificando a la matriz $A$ con operaciones elementales, calcula su rango,
+con 
+\[
+A = \begin{pmatrix}
+1 & 2 & 3 & 1 \\
+2 & 1 & 1 & 1 \\
+1 & -1 & 1 & 0
+\end{pmatrix}.
+\]
+\end{ejem}

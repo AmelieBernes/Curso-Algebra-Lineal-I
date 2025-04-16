@@ -6,7 +6,8 @@
 
 \usepackage[utf8]{inputenc}
 
-				
+
+
 \usepackage{babel}
 %\decimalpoint
 \usepackage{mathtools}% http://ctan.org/pkg/mathtool
@@ -17,14 +18,18 @@
 \usepackage{halloweenmath}
 \usepackage{MnSymbol}
 
+\usepackage{multicol} 
+\usepackage{pdfpages}
+
 \usepackage{tikz}
-\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt   
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
 \usepackage{imakeidx}
 \makeindex
 
- 
+
 \usepackage[dvipsnames]{xcolor}
 \newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+
 
 % --------------- highlight -----------------------------
 
@@ -39,7 +44,7 @@
 % ---------------------------------------------------------
 
 \usepackage{subcaption, threeparttable}
-\usepackage{graphicx} 
+\usepackage{graphicx}
 \graphicspath{{./imagenes}}
 \DeclareCaptionFormat{custom}
 {
@@ -62,7 +67,7 @@
 
 %Paquetes usados en estilo.tex
 \usepackage{geometry}
-\usepackage{sidenotes} 
+\usepackage{sidenotes}
 \usepackage[font=footnotesize,format=plain,labelfont={bf,sf},textfont={it},width=10pt]{caption}
 % Captions at the side of the page
 %\usepackage[wide]{sidecap}
@@ -91,7 +96,8 @@
 \newcommand*{\IC}{\mathbb{C}}
 \newcommand*{\IN}{\mathbb{N}}
 \newcommand*{\IZ}{\mathbb{Z}}
-\newcommand*{\IT}{\mathbb{T}}
+\newcommand*{\IF}{\mathbb{F}}
+\newcommand*{\IQ}{\mathbb{Q}}
 \newcommand*{\QEDB}{\null\nobreak\hfill\ensuremath{\square}}%
 \newcommand*{\diam}{\null\nobreak\hfill\ensuremath{\diamond}}%
 
@@ -105,8 +111,10 @@
 			\newtheorem{obs}[teo]{Observación}
 			\newtheorem{cor}[teo]{Corolario}
 			\newtheorem{defi}[teo]{Definición}
+			\newtheorem{nota}[teo]{Nota}
 			\newtheorem{notacion}[teo]{Notación}
 			\newtheorem{ejem}[teo]{Ejemplo}
+			\newtheorem{prob}[teo]{Problema}
 			\newtheorem{ej}{Ejercicio}
 
 \input{estilo}
@@ -127,17 +135,164 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%Bibliografía
+\usepackage[backend=bibtex,style=alphabetic]{biblatex}
+%\bibliography{referencias.bib}
+\addbibresource{referencias.bib}
+
+
 \begin{document}
+
+%\includepdf[pages=-]{portada2.pdf}
+
+\begin{titlepage}
+	\newgeometry{margin=3cm}
+	\centering
+	
+	\vspace*{\stretch{2}}
+	
+	\Large Notas de Álgebra Lineal
+	
+	\vspace{\stretch{1}}
+	
+	\normalsize Amélie Bernès 
+	
+	\vspace{\stretch{0.5}}
+	
+	%\begin{tabular}{ll}
+	%	Submission date & xx.yy.zzzz \\[2ex]
+	%	Student's name  & Name \\[2ex]
+	%	From            & Place
+	%\end{tabular}
+	
+	\vspace{\stretch{3}}
+	
+	\begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}l@{}}
+		Primavera, 2025 & BUAP \\[2ex]
+		& FCFM
+	\end{tabular*}
+	
+	\vspace{\stretch{2}}
+\end{titlepage}
+
+\restoregeometry
+\cleardoublepage
+
+
+\newpage 
+
 \tableofcontents
 
-%\input{espaciosVectoriales}
-%\input{ejercicios1}
-%\input{li_ld}
-%\input{ejercicios2}
+
+\newpage 
+
+\chapter{Información general del curso}
+Intentaremos acordar al menos una hora a la semana en la que podamos
+tener asesorías grupales, para poder discutir con los alumnos que así lo
+deseen las dudas que tengan respecto al curso.
+
+
+\section{Forma de evaluación}
+\begin{itemize}
+    \item \textbf{Examen: 70\%}.
+    \hl{Se realizarán dos exámenes parciales a lo largo del semestre.
+    El promedio de la calificación de estos será el
+    70\% de la calificación final del alumno} (i.e. un promedio perfecto
+    de 10 le da 7 puntos de 10 en su calificación final).
+    Por posibles cuestiones de salud
+    no se prohíben las salidas breves al sanitario durante el examen, pero
+    se exhorta a los alumnos a evitar este tipo de situaciones y permanecer en
+    el salón mientras responden su examen. No se permitirá el uso de celulares
+    durante el examen.
+
+    \item \textbf{Tareas: 20\%}.
+    Antes de cada parcial, se enviará por correo un ejercicio que el alumno deberá 
+    resolver
+    pulcramente para entregar en una fecha acordada. Antes del examen se les
+    regresará su ejercicio calificado. \hl{El alumno obtendrá 2 puntos de
+    su calificación final si entrega ambos ejercicios y 1 si entrega uno solo}.
+    Se les pide encarecidamente no copiar
+    o usar modelos de lenguaje para hacer sus tareas, ya que el objetivo
+    principal de esta actividad es, de mi parte,
+    dar la mayor retroalimentación posible para ayudarlos
+    a identificar posibles
+    errores en su razonamiento y redacción,
+    en resumen, hacerles comentarios que puedan tomar en cuenta
+    para cuando presenten su examen. Si la tarea contiene errores muy graves
+    de comprensión o calidad esta se anulará.
+
+    \item \textbf{Participación: 10\%}.
+    \hl{El alumno deberá participar voluntariamente
+    al menos una vez durante el semestre
+    para conseguir 1 punto correspondiente al rubro de participación.}
+    Se tomarán en cuenta las participaciones
+    realizadas fuera del horario de clase durante las tutorías.
+\end{itemize}
+
+Las calificaciones reprobatorias
+(i.e. menores a 6) no se redondean. 
+\hl{Si el alumno 
+	ha asistido al menos al 60\% de las sesiones,
+	tiene derecho a presentar
+	un examen extraordinario al final del semestre}
+. La calificación obtenida
+en este será la final y definitiva del curso.
+Si el alumno había aprobado el curso, pero
+quiere presentar el examen extraordinario para subir su calificación,
+podrá presentarse para resolverlo, sin embargo, si lo entrega para
+su revisión, acepta que renuncia
+a su calificación aprobatoria inicial, y que su nota final será la que
+obtenga en el examen extraordinario (aún cuando esta sea reprobatoria).
+
+\begin{figure}[H]
+    	\sidecaption{
+    	En el eje $x$ se marca el promedio de ambos exámenes parciales,
+    y en el eje $y$ la calificación final del curso: la recta muestra la calificación
+    final que obtendrías suponiendo que participaste y entregaste tus dos tareas.
+    	}
+    	\centering
+    	\includegraphics[scale = 0.3]{graficaCalif}
+    \end{figure}
+
+
+\section{Algunos conceptos que debes repasar}
+
+Se usarán constantemente definiciones que estudiaste en cursos pasados, en particular
+\begin{itemize}
+	\item el concepto de función, dominio, codominio, imágenes e imágenes inversas,
+	\item manipulaciones algebráicas de matrices (suma, multiplicación, producto por un número real), matrices simétricas, cuadradas, la traza de una matriz y el rango de esta,
+	\item resolución de sistemas de ecuaciones lineales,
+	\item la definición de unión e intersección de una familia de conjuntos
+\end{itemize}
+
+
+
+\section{Bibliografía}
+Los textos principales del curso serán
+\cite{Friedb}, \cite{Hugo} y \cite{ladr}, 
+pero para algunos temas particulares me apoyaré de los libros
+\cite{Brown}, \cite{Golan} y \cite{Godement}.
+
+
+
+
+\input{espaciosVectoriales}
+\input{ejercicios1}
+\input{li_ld}
+\input{ejercicios2}
+\input{examen1}
+
+
+%----------- Segundo parcial
 \input{transfLin}
 \input{ejercicios3}
 \input{reprMatriciales}
 \newpage
 \input{ejer4}
+\input{examen2}
+\input{diagonalizacion}
+
+
+\printbibliography
 \end{document}
 

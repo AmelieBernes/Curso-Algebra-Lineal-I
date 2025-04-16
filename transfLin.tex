@@ -16,11 +16,14 @@ verse de forma natural como transformaciones lineales, por ejemplo,
 	la geometría.
 \end{itemize}
 
+
 Explicaremos además cómo codificar la información de una
-transformación lineal entre espacios vectoriales finito
+transformación lineal 
+entre espacios vectoriales finito
 dimensionales en una matríz (que dependerá de las bases
-escogidas para el dominio y codominio), habilidad indudablemente
-útil para las aplicaciones del álgebra lineal.
+escogidas para el dominio y codominio), hecho que hará que la teoría
+desarrollada sea fácilmente llevada a la práctica - pues estaremos
+sustituyendo a las funciones por objetos discretos.
 
 \begin{figure}[H]
 	\sidecaption{
@@ -169,6 +172,38 @@ x_{1} \in W_{1}, x_{2} \in W_{2}
 es llamada
 una \textbf{proyección sobre $W_{1}$}.
 \end{defi}
+
+\begin{nota}
+	Si $U, V, W$ son subespacios de
+	un $F-$espacio vectorial, la igualdad $U \oplus V = U \oplus W$ 
+	\textbf{no implica} la igualdad $V = W$.
+	
+	Por ejemplo, considérese a los subespacios de $\IR^{2}$
+	\[
+	U = span(\{(1, 0)\}), \hspace{0.2cm} \textit{ eje x},
+	\]
+	\[
+	V = span(\{(0, 1)\}), \hspace{0.2cm} \textit{ eje y},
+	\]
+	\[
+	W = span(\{(1, 1)\}), \hspace{0.2cm} \textit{ gráfica de la recta $y = x$}.
+	\]
+	Puesto que $U \cap V = \{0\} = U \cap W$, la suma de $U$ con 
+	$V$ y de $U$ con $W$ es directa (c.f. Proposición
+	\ref{prop: suma directa sii interseccion cero}), y de hecho es todo el espacio:
+	\[
+	U \oplus V = \IR^{2} = U \oplus W.
+	\]
+	Sin embargo, claro que $V \neq W$. 
+	Observa que 
+	\[
+	\forall (x, y) \in \IR^{2}: \hspace{0.2cm}
+	x (1, 0) + y (0, 1) = (x, y) = (x-y) (1, 0) + y(1, 1).
+	\]
+	$\diamond$
+\end{nota}
+
+
 Observe que, como se usa una suma directa para
 definir una proyección, la expresión
 \eqref{eq: proyeccion sobre W1}
@@ -184,7 +219,7 @@ a T(x_{1}) + T(x_{2}).
 Note que $W_{1} = \{ x \in V  | \hspace{0.2cm} T(x) = x \}$,
 es decir, el conjunto de puntos fijos de una proyección
 en $W_{1}$ coincide con $W_{1}$. 
-En la definición \ref{def: proyeccion}
+En la Definición \ref{def: proyeccion}
 hablamos de ``una'' proyección a $W_{1}$; esto es porque, 
 como mostramos a continuación, hay tantas
 transformaciones lineales que satisfacen la 
@@ -362,7 +397,8 @@ lo que achica a $T(V)$. El siguiente teorema, pilar del
 
 \begin{teo}
 	\label{teo: fundamental de las transf lineales}
-\textbf{(fundamental de las transformaciones lineales)}
+\textbf{(fundamental de las transformaciones lineales), 
+\textbf{teorema de la dimensión}}
 Sean $V$, $W$ $F-$ espacios vectoriales, con $V$
 finito dimensional.
 Para toda
@@ -404,15 +440,15 @@ es base de la imagen $T(V)$.
 	\]
 	es decir,
 	\[
-	a_{1}v_{1} + \cdots + a_{l}v_{l} \in Ker(T)
-	= \langle \{ n_{1}, \ldots , n_{k} \} \rangle,
+	a_{1}v_{1} + \cdots + a_{l}v_{l} \in Ker(T) =
+	span(\{ n_{1}, \ldots , n_{k} \}),
 	\]
 	por lo tanto, 
 	\[
-	v_{1} \in \langle \{ n_{1}, \ldots , n_{k} \}
-	\cup \{ v_{2}, \ldots , v_{l} \} \rangle.
+	v_{1} \in span(\{ n_{1}, \ldots , n_{k} \}
+	\cup \{ v_{2}, \ldots , v_{l} \}).
 	\]
-	Esto, según el lema 
+	Esto, según el Lema 
 	\ref{lema: S union x es ld sii x en generado de S}, contradice
 	la independencia lineal de $\beta$.
 	\item Claro que $\{ T(v_{1}), \ldots, T(v_{l}) \}$
@@ -436,6 +472,9 @@ dim(V) = k + l = dim(Ker(V)) + dim(T(V)).
 \] 
 \QEDB
 \vspace{0.2cm}
+
+\hlpink{Poner una nota para que ya no confundan el rango de $T$
+con el codominio de $T$.}
 
 \begin{cor}
 	\label{cor: imagen de base de V bajo lineal genera a W}
@@ -484,7 +523,7 @@ $T(\beta)$ genera a $T(V)$.
 	\]
 	\item La función coseno evaluada en cero vale uno, luego, 
 	no es lineal.
-	\item Según el teorema \ref{teo: fundamental de las transf lineales},
+	\item Según el Teorema \ref{teo: fundamental de las transf lineales},
 	si $T: \IR \longrightarrow \IR$ es lineal, entonces
 	\[
 	1 = dim(Ker(T)) + dim(T(V)),
@@ -608,25 +647,25 @@ es lineal, las siguientes son equivalentes:
 \textbf{Demostración.}
 \begin{itemize}
 	\item[$1) \Rightarrow 2)$] Sea $X$ un generador de $V$,
-	es decir, un subconjunto tal que $\langle X \rangle = V$.
+	es decir, un subconjunto tal que $span(X) = V$.
 	Esto significa que el único subespacio de $V$ que contiene a 
 	$X$ es el mismo $V$. Puesto que
-	$X \subseteq T^{-1}(\langle T(X) \rangle)$
+	$X \subseteq T^{-1}(span(T(X)))$
 	(pues, dado $x \in X$, $T(x) \in T(X) \subseteq 
-	\langle T(X) \rangle$), se tiene entonces
-	$T^{-1}(\langle T(X) \rangle) = V$. Evaluando ambos lados
+	span(T(X))$), se tiene entonces
+	$T^{-1}( span(T(X)) ) = V$. Evaluando ambos lados
 	de la igualdad bajo la función suprayectiva $T$ concluimos que
 	\[
-	W = T(V) = T(T^{-1}(\langle T(X) \rangle)) = \langle T(X) \rangle,
+	W = T(V) = T(T^{-1}( span(T(X))  )) =  span(T(X)),
 	\]
 	o sea, que $T(X)$ genera a $W$.
 	\item[$2) \Rightarrow 1)$] V trivialmente se genera a sí mismo,
 	luego, por hipótesis debe ocurrir que $T(V)$ genere a $W$, o sea,
 	que 
 	\[
-	W = \langle T(V) \rangle = T(V),
+	W = span(T(V)) = T(V),
 	\]
-	por lo tanto $T$ es supra.
+	por lo tanto $T$ es suprayectiva.
 \end{itemize}
 
 \QEDB
@@ -675,8 +714,42 @@ un \textbf{isomorfismo}. Si existe un isomorfismo
 entre dos espacios vectoriales $V$ y $W$
 decimos que $V$ y $W$ son \textbf{isomorfos}.
 \end{defi}
-El teorema \ref{teo: fundamental de las transf lineales}
-de hecho implica que,
+
+Recuerda de tus cursos anteriores que una \textit{función}
+$f: A \longrightarrow B$ es biyectiva si y sólo si 
+es invertible (i.e. si y sólo si existe una función
+$g: B \longrightarrow A $ tal que $f \circ g = Id_{B}$ y
+$g \circ f = Id_{A}$). Entonces, una transformación lineal
+$T:V \longrightarrow W$ es un isomorfismo si y sólo si 
+existe una función $U: W \longrightarrow V$ que sea su inversa.
+Claro que tal inversa de existir es única, y se le suele denotar
+por $T^{-1}$.
+Como establecemos
+a continuación, tal función es, al igual que $T$, una transformación lineal.
+\begin{prop}
+	Si $T: V \longrightarrow W$ es un isomorfismo, entonces
+	su función inversa $T^{-1}$ es también un isomorfismo.
+\end{prop}
+\noindent
+\textbf{Demostración.}
+Basta probar la linealidad de $T^{-1}$. Sean pues
+$y, z \in W$, $\lambda \in F$. Puesto que $T$ es lineal
+y $u := T^{-1}(y)$, $v := T^{-1}(z)$ son vectores de $V$,
+se tiene que 
+\[
+T( \lambda u + v) = \lambda T(u) + T(v) = \lambda y +z,
+\]
+luego,
+\[
+T^{-1}(\lambda y + z) = \lambda u + v = \lambda T^{-1}(y) + T^{-1}(z).
+\]
+
+\QEDB
+\vspace{0.2cm}
+
+
+
+Mostremos ahora que,
 si $V$ es finito dimensional, entonces puede
 establecerse un isomorfismo entre $V$
 y otro $F-$espacio vectorial $W$ sólo si
@@ -697,7 +770,7 @@ Por ser $T$ un isomorfismo, se tiene que
 Ker(T) = \{ 0_{V} \} \hspace{0.2cm} \textit{ y }
 \hspace{0.2cm} T(V) = W.
 \]
-Además, como $V$ es finito dimensional, podemos usar el teorema
+Además, como $V$ es finito dimensional, podemos usar el Teorema
 \ref{teo: fundamental de las transf lineales}
 para deducir que
 \begin{align*}
@@ -708,6 +781,10 @@ n = dim(V) = & dim(Ker(T)) + dim(T(V)) \\
 \QEDB
 \vspace{0.2cm}
  
+ 
+ Mostremos ahora que, cuando se trata con espacios vectoriales finito
+ dimensionales, los conceptos de inyectividad, suprayectividad
+ y biyectividad en transformaciones lineales son equivalentes.
 \begin{teo}
 	\label{teo: inyectiva sii supra sii biyect en dim finita}
 Sean $V$, $W$ dos $F-$espacios vectoriales, ambos de dimensión
@@ -725,7 +802,7 @@ Basta demostrar que $1)$ implica $2)$ y que
 $2)$ implica $3)$.
 \begin{itemize}
 	\item[$1) \Rightarrow 2)$] Si $T$ es inyectiva entonces
-	$Ker(T) = \{ 0 \}$, luego, por el teorema 
+	$Ker(T) = \{ 0 \}$, luego, por el Teorema 
 	\ref{teo: fundamental de las transf lineales},
 	\[
 	n = dim(V) = dim(Ker(T)) + dim(T(V)) = 0 + dim(T(V)) =
@@ -743,7 +820,34 @@ $2)$ implica $3)$.
 \end{itemize}
 \QEDB
 \vspace{0.2cm}
+
 \begin{ejem}
+	(para mostrar la importancia de la hipótesis de dimensión finita
+	en el Teorema \ref{teo: inyectiva sii supra sii biyect en dim finita})
+	Considere al $\IR-$espacio vectorial $\IR^{\IN}$ de sucesiones en $\IR$
+	(c.f. Sección \ref{subs: F ev de funciones de X en F}).
+	Sean $L, R : \IR^{\IN} \longrightarrow \IR^{\IN}$ las funciones definidas como
+	\marginnote{A las transformaciones 
+	\eqref{eq: funciones left y right shift} se les conoce como
+	``right shift'' y ``left shift'', resp.}
+	\begin{equation}
+		\label{eq: funciones left y right shift}
+		\forall x = (x_{1}, x_{2}, x_{3}, \ldots) \in \IR^{\IN}:
+		\hspace{0.4cm}
+		R(x) = (0, x_{1}, x_{2}, \ldots),
+		\hspace{0.2cm}
+		L(x) = (x_{2}, x_{3}, \ldots).
+	\end{equation}
+	Claro que $R$ y $L$ son ambas lineales, y que
+	$L \circ R = Id_{\IR^{\IN}}$, luego, si $R$ tiene inversa,
+	tiene que ser $L$. Sin embargo, 
+	$R \circ L \neq Id_{\IR^{\IN}}$, por lo tanto, $R$ no es invertible,
+	luego, no es un isomorfismo. Sin embargo, sí es inyectiva. Similarmente
+	puede notar que $L$ no es un isomorfismo, pero que sí es
+	suprayectiva. $\diamond$
+\end{ejem}
+
+\begin{ejem}	
 Sea la función $T: P_{2}(\IR) \longrightarrow P_{3}(\IR)$
 definida como
 \[
@@ -751,7 +855,7 @@ T(f)(u) = 2 f'(u) + \int_{0}^{u} 3f(x) dx.
 \hspace{0.2cm} \textit{(polinomio en la variable )} u. 
 \]
 Puesto que $T$ es combinación lineal de transformaciones lineales,
-es también lineal. Según el corolario 
+es también lineal. Según el Corolario 
 \ref{cor: imagen de base de V bajo lineal genera a W},
 $\{ T(1), T(x), T(x^{2}) \}$ genera al rango de $T$. Se calcula que
 \[
@@ -776,31 +880,6 @@ $dim(P_{2}(\IR)) = 3$, se debe tener que $T$ es inyectiva.
 $\diamond$
 \end{ejem}
 
-Recuerde que toda función biyectiva es invertible. 
-Sea pues $T: V \longrightarrow W$ un isomorfismo; sabemos que existe
-la función inversa $T^{-1}: W \longrightarrow V$. Como establecemos
-a continuación, tal función es, al igual que $T$, una transformación lineal.
-\begin{prop}
-Si $T: V \longrightarrow W$ es un isomorfismo, entonces
-su función inversa $T^{-1}$ es también un isomorfismo.
-\end{prop}
-\noindent
-\textbf{Demostración.}
-Basta probar la linealidad de $T^{-1}$. Sean pues
-$y, z \in W$, $\lambda \in F$. Puesto que $T$ es lineal
-y $u := T^{-1}(y)$, $v := T^{-1}(z)$ son vectores de $V$,
-se tiene que 
-\[
-T( \lambda u + v) = \lambda T(u) + T(v) = \lambda y +z,
-\]
-luego,
-\[
-T^{-1}(\lambda y + z) = \lambda u + v = \lambda T^{-1}(y) + T^{-1}(z).
-\]
-
-\QEDB
-\vspace{0.2cm}
-
 \section{La propiedad universal de las bases}
 Recuerda que, dados $V$ y $W$ dos $F-$ espacios vectoriales,
 una transformación lineal $T:V \longrightarrow W$
@@ -812,10 +891,10 @@ determinadas por su definición en una base cualquiera
 del espacio $V$; conocer los valores de $T$ en una base
 de $V$ nos permite saber los valores de $T$ en \textit{cualquier}
 punto de $V$.
-\marginnote{Al teorema 
-\ref{teo: propiedad univ de las bases} también se le llama el 
-teorema fundamental de las bases. Se usará en repetidas ocasiones
-para desarrollar la teoría de las siguientes secceiones, por lo que
+\marginnote{Al Teorema 
+\ref{teo: propiedad univ de las bases} también se le conoce como el 
+Teorema fundamental de las bases. Se usará en repetidas ocasiones
+para desarrollar la teoría de las siguientes secciones, por lo que
 se recomienda entenderlo bien.}
 \begin{teo}
 	\label{teo: propiedad univ de las bases}
@@ -863,10 +942,10 @@ para $\beta \subseteq V$ las siguientes:
 \end{itemize}
 \end{teo}
 \textbf{Nota:} en realidad, este teorema es cierto aún cuando
-$V$ es infinito dimensional (c.f. Hugo Rincón p. 84). Sin embargo,
+$V$ es infinito dimensional (c.f. \cite{Hugo} p. 84). Sin embargo,
 como en el curso no hemos demostrado los resultados necesarios
 para probar esto cuando se trabaja en un espacio infinito dimensional
-(no estudiamos el lema de Zorn, por lo que no pudimos demostrar
+(no estudiamos el Lema de Zorn, por lo que no pudimos demostrar
 hechos fundamentales como la existencia de bases para cualquier
 espacio vectorial o el hecho de que un l.i. de un espacio ininito
 dimensional puede extenderse a una base de este), nos limitaremos
@@ -1000,16 +1079,16 @@ si y sólo si $V$ es isomorfo a $\IR^{n}$.
 \textbf{Demostración.}
 \begin{itemize}
 	\item[$\Leftarrow$)] Inmediata de notar que $dim(\IR^{n}) = n$
-	y la proposición \ref{prop: isomorfo implica misma dimension}.
+	y la Proposición \ref{prop: isomorfo implica misma dimension}.
 	\item[$\Rightarrow$)] Sea $\beta = \{ v_{1}, \ldots , v_{n} \}$
 	base de $V$. Sea $f: \beta \longrightarrow \IR^{n}$ la función
 	que a $v_{i}$ le asigna $\hat{e}_{i}$. Según la propiedad 
-	universal de las bases (c.f. teorema 
+	universal de las bases (c.f. Teorema 
 	\ref{teo: propiedad univ de las bases}), podemos extender
 	a $\beta$ linealmente. Sea $T: V \longrightarrow \IR^{n}$ 
 	tal extensión lineal. Puesto que $T(V)$ contiene a la 
 	base canónica de $\IR^{n}$, $T(V) = \IR^{n}$, o sea,
-	$T$ es suprayectiva. De esto, según el teorema 
+	$T$ es suprayectiva. De esto, según el Teorema 
 	\ref{teo: inyectiva sii supra sii biyect en dim finita}, se
 	deduce que $T$ es un isomorfismo.
 \end{itemize}
@@ -1018,7 +1097,7 @@ si y sólo si $V$ es isomorfo a $\IR^{n}$.
 
 \section{Caracterización de transformaciones lineales de $\IR^{n}$ en $\IR^{m}$}
 Es gracias a la propiedad universal de las bases establecida
-en el teorema \ref{teo: propiedad univ de las bases}
+en el Teorema \ref{teo: propiedad univ de las bases}
 que vamos a poder caracterizar a las transformaciones lineales
 entre $F-$espacios vectoriales finito
 dimensionales. Como veremos más adelante, esto nos permitirá 
@@ -1026,25 +1105,25 @@ capturar toda la información de una transformación lineal a partir
 de una cantidad finita de números, que almacenaremos en un arreglo
 numérico rectangular - i.e. en una matriz.
 Antes de abordar la teoría en general, para familiarizarnos
-con la ideas que vamos a estudiar más adelante 
-para el caso de transformaciones lineales de un $\IR^{n}$
-a un $\IR^{m}$.
+con las ideas que vamos a encontrar más adelante, estudiemos 
+el caso de transformaciones lineales de un $\IR^{n}$
+a un $\IR^{m}$, con $m, n \geq 1$ enteros.
 
 
-Para simplificar la notación, conviente introducir la noción de producto
-punto en $\IR^{n}$.
+Para simplificar la notación, conviene introducir la noción del
+producto 
+punto euclídeo en $\IR^{n}$.
 \begin{defi}
 Para $\hat{x} = (a_{i})_{i=1}^{n}, 
 \hat{y} = (b_{i})_{i=1}^{n} \in \IR^{n}$, definimos su \textbf{producto
-punto} como
+punto (euclídeo)} como
 \[
 \langle \hat{x}, \hat{y} \rangle = 
 \sum_{i=1}^{n} a_{i} b_{i}.
 \]
 \end{defi}
-
 Recordando la definición de producto de matrices, podemos
-reinterpretar al producto puntos de dos vectores de $\IR^{n}$
+reinterpretar al producto punto de dos vectores de $\IR^{n}$
 \marginnote{Este es un buen momento para recordar que, por lo general,
 la multiplicación de matrices no es conmutativa.}
 como producto de matrices;
@@ -1056,9 +1135,10 @@ b_{1} \\ b_{2} \\ \vdots \\ b_{n}
 \end{pmatrix} 
 = \left( \sum_{i=1}^{n}a_{i}b{i} \right).
 \]
-Claro que estamos haciendo un abuso de notación identificando
+En lo que sigue, vamos a identificar
 a una matriz de $1 \times 1$ con su única entrada.
-También vamos a estar identificando a ``vectores fila''
+Tampoco haremos distinción de los
+``vectores fila''
 $(a_{1}, a_{2}, \ldots , a_{n})$ con 
 ``vectores columna'' 
 \[
@@ -1066,10 +1146,12 @@ $(a_{1}, a_{2}, \ldots , a_{n})$ con
 a_{1} \\ a_{2} \\ \vdots \\ a_{n}
 \end{pmatrix}.
 \]
+Para ser más formales, deberíamos de escribir al 
+vector columna anterior como $(a_{1}, \ldots , a_{n})^{t}$.
 
 \begin{itemize}
 	\item[$I)$] Sea $T : \IR \longrightarrow \IR^{n}$ lineal.
-	Consideremos a la base $\{ 1 \}$ de $\IR$. Según el teorema 
+	Consideremos a la base $\{ 1 \}$ de $\IR$. Según el Teorema 
 	\ref{teo: propiedad univ de las bases},
 	$T$ queda completamente determinada por su valor en $1$;
 	digamos que $T(1) = (c_{1}, c_{2}, \ldots , c_{n})$.
@@ -1082,15 +1164,15 @@ a_{1} \\ a_{2} \\ \vdots \\ a_{n}
 	(a).
 	\]
 	
-	\item[$II)$] Sea $T: \IR^{n} \rightarrow \IR$ lineal. Ahora vamos
+	\item[$II)$] Sea $T: \IR^{n} \longrightarrow \IR$ lineal. Ahora vamos
 	a considerar a la base canónica 
 	$\{ \hat{e}_{1}, \hat{e}_{2}, \ldots , \hat{e}_{n} \}$
-	de $\IR^{n}$. Nuevamente, el teorema \ref{teo: propiedad univ de las bases}
+	de $\IR^{n}$. Nuevamente, el Teorema \ref{teo: propiedad univ de las bases}
 	nos asegura que,
 	con conocer los valores
 	\begin{equation*}
 		\label{eq: 0, 9 oct}
-		c_{i} = T(\hat{e}_{i}), \hspace{0.3cm} 1 \leq i \leq n,
+		c_{i} = T(\hat{e}_{i}) \in \IR, \hspace{0.3cm} 1 \leq i \leq n,
 	\end{equation*}
 	conocemos los valores de la transformación lineal $T$ en todo 
 	punto de $\IR^{n}$; en efecto,
@@ -1104,8 +1186,9 @@ a_{1} \\ a_{2} \\ \vdots \\ a_{n}
 	\end{pmatrix},
 	\]
 	donde $\hat{c} = (c_{1}, c_{2}, \ldots ,c_{n})$.
-	\item[$II)$] Ahora si consideremos el caso más general de 
-	una transformación lineal $T: \IR^{n} \longrightarrow \IR^{m}$.
+	\item[$II)$] Ahora sí, consideremos el caso más general de 
+	una transformación lineal $T: \IR^{n} \longrightarrow \IR^{m}$,
+	con $m, n \geq 1$ enteros cualesquiera.
 	De nuevo tomamos a la base canónica de $\IR^{n}$ compuesta
 	por los vectores $\hat{e}_{i}$. Si 
 	\[
@@ -1115,25 +1198,33 @@ a_{1} \\ a_{2} \\ \vdots \\ a_{n}
 	entonces,
 	para cualquier $\hat{x} = (a_{1}, \ldots , a_{n}) \in \IR^{n}$,
 	\begin{align*}
-	T(\hat{x}) = \sum_{i=1}^{n} a_{i} T(e_{i}) = &
-	\sum_{i=1}^{n} a_{i}(c_{1i}, c_{2i}, \ldots, c_{ni})
-	= \sum_{i=1}^{n}(a_{i}c_{1i}, a_{i} c_{2i}, \ldots , a_{i}c_{ni})\\
+	T(\hat{x}) = 
+	T\left( \sum_{i=1}^{n} a_{i}e_{i} \right) 
+	= & \sum_{i=1}^{n} a_{i} T(e_{i})
+	\\
+	= &
+	\sum_{i=1}^{n} a_{i}(c_{1i}, c_{2i}, \ldots, c_{mi}) \\ 
+	= & \sum_{i=1}^{n}(a_{i}c_{1i}, a_{i} c_{2i}, \ldots , a_{i}c_{mi})\\
 	= & \left( \sum_{i=1}^{n} a_{i}c_{1i},
 	\sum_{i=1}^{n} a_{i}c_{2i}, \ldots , 
-	\sum_{i=1}^{n} a_{i}c_{mi}  \right).
+	\sum_{i=1}^{n} a_{i}c_{mi}  \right) \\
+	= & \left(
+	\langle \hat{x}, M_{1}\rangle, 	 
+	\langle \hat{x}, M_{2}\rangle, \ldots ,
+	\langle \hat{x}, M_{m}\rangle
+	\right),
 	\end{align*}
-	Nota que cada entrada es entonces un producto punto.
+	donde $M_{1}, M_{2}, \ldots , M_{m}$ son las $m$
+	filas de la matriz
 	\[
 	\begin{pmatrix}
 	c_{11} & c_{12} & \ldots & c_{1n} \\
 	c_{21} & c_{22} & \ldots & c_{2n} \\
 	\cdots & \cdots & \cdot & \cdot \\
 	c_{m1} & c_{m2} & \cdots & c_{mn}
-	\end{pmatrix}
-	\begin{pmatrix}
-	a_{1} \\ a_{2} \\ \vdots \\ a_{n}
-	\end{pmatrix}
+	\end{pmatrix} \in M_{m \times n}(\IR),
 	\]
+que se forma usando a los $n$ vectores $T(e_{i})$ de $\IR^{m}$ 
+como columnas.
 \end{itemize}
-
 \newpage

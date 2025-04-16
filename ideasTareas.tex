@@ -1,0 +1,419 @@
+\documentclass[10pt]{extreport}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+%\input{paquetes}
+
+% ----------------------- Packages --------------------------
+
+\usepackage[utf8]{inputenc}
+
+
+
+\usepackage{babel}
+%\decimalpoint
+\usepackage{mathtools}% http://ctan.org/pkg/mathtool
+\usepackage{amsthm, amsmath, bm, amssymb} %math packages
+\usepackage{ wasysym, stmaryrd } %Para rayo de contradicción
+\usepackage{lineno}
+
+\usepackage{halloweenmath}
+\usepackage{MnSymbol}
+
+\usepackage{tikz}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
+\usepackage{imakeidx}
+\makeindex
+
+
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+
+% --------------- highlight -----------------------------
+
+\usepackage{soul}
+\usepackage{hyperref}
+
+
+\newcommand{\hlpink}[1]{{\sethlcolor{lime}\hl{#1}}}
+\newcommand{\hlgray}[1]{{\sethlcolor{lightgray}\hl{#1}}}
+\newcommand{\hllilac}[1]{{\sethlcolor{Orchid}\hl{#1}}}
+
+% ---------------------------------------------------------
+
+\usepackage{subcaption, threeparttable}
+\usepackage{graphicx}
+\graphicspath{{./imagenes}}
+\DeclareCaptionFormat{custom}
+{
+	\textbf{#1#2}\textit{\small #3}
+}
+\captionsetup{format=custom}
+\usepackage[font=small,labelfont=bf]{caption} %para que los nombres 'Figura x' estén en negritas.
+
+%Para rotar imágenes:
+\usepackage{wrapfig}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{epstopdf}
+
+\usepackage{marginfix}
+\usepackage{marginnote}
+\renewcommand*{\marginfont}{\footnotesize} %Para cambiar el tamaño de fuente de las marginnote: https://tex.stackexchange.com/questions/30473/specifying-font-size-in-a-newcommand
+
+
+
+%Paquetes usados en estilo.tex
+\usepackage{geometry}
+%\usepackage{sidenotes}
+%\usepackage[font=footnotesize,format=plain,labelfont={bf,sf},textfont={it},width=10pt]{caption}
+% Captions at the side of the page
+%\usepackage[wide]{sidecap}
+\usepackage{morefloats}
+
+
+\usepackage[backend=bibtex,style=alphabetic]{biblatex}
+%\bibliography{referencias.bib}
+\addbibresource{referencias.bib}
+\usepackage{subfiles} % Best loaded last in the preamble
+
+
+% ----------------------------------------------------------------------- QUOTES
+\usepackage{csquotes}
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+		\hbox{}\nobreak\hfil(#1)% <-- edit this to change the looks of the author to e.g. "...\hfil - #1%" to get a similar output as in Skillmon's example (also, the %-sign needs to be there!)
+		\parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{signquote}[1]
+{\savebox\mybox{#1}\begin{quote}}
+	{\signed{\usebox\mybox}\end{quote}}
+% -------------------------------------------------------------------
+
+
+
+\usepackage{float}
+
+\newcommand*{\IR}{\mathbb{R}}
+\newcommand*{\IC}{\mathbb{C}}
+\newcommand*{\IN}{\mathbb{N}}
+\newcommand*{\IZ}{\mathbb{Z}}
+\newcommand*{\IF}{\mathbb{F}}
+\newcommand*{\IQ}{\mathbb{Q}}
+\newcommand*{\QEDB}{\null\nobreak\hfill\ensuremath{\square}}%
+\newcommand*{\diam}{\null\nobreak\hfill\ensuremath{\diamond}}%
+
+\newcommand{\TODO}[1]{\textcolor{violet}{#1}} % TODO quitar. Sólo lo uso mientras estoy editando para resaltar en morado.
+
+%Ambientes de teorema antiguos. TODO quitar esto.
+\newtheorem{teo}{Teorema}[section]
+%Pongo a todas el contador de 'teo'
+\newtheorem{lema}[teo]{Lema}
+\newtheorem{prop}[teo]{Proposición}
+\newtheorem{obs}[teo]{Observación}
+\newtheorem{cor}[teo]{Corolario}
+\newtheorem{defi}{Definición}
+\newtheorem{notacion}[teo]{Notación}
+\newtheorem{ejem}[teo]{Ejemplo}
+\newtheorem{prob}{Problema}
+\newtheorem{ej}{Ejercicio}
+
+%\input{estilo}
+\usepackage{tcolorbox}
+\tcbuselibrary{listingsutf8}
+
+% Definir cuadro de ancho del texto
+\NewTColorBox{boxProblem}{O{sidebyside=false, lower separated = true} m D(){#2}}{
+	colback=purple!5!white,
+	colframe=violet,
+	colupper=violet!50!black,
+	fontupper=\bfseries,
+	fonttitle=\bfseries,
+	label = {problem #3},
+	title={#2},
+	#1
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\chapter{Ideas de problemas para tarea o examen}
+		\begin{itemize}
+		\item Demuestra que, si $\{ U_{\alpha} \}_{\alpha \in I}$ es una familia
+		de subespacios de $V$, entonces $\cup U_{\alpha}$ contiene al vector cero
+		y es cerrada bajo multiplicaciones escalares. Da un ejemplo en el que
+		$\cup U_{\alpha}$ no sea subespacio de $V$.
+		
+		\item Si $U, V, W$ son subespacios de un $F-$espacio vectorial
+		tales que $U \oplus  V = U \oplus W$, ¿necesariamente
+		se tiene que $V = W$? Si la respuesta es afirmativa, demuéstrelo;
+		si es negativa, de un contraejemplo.
+		
+		\item ¿El krank de una matriz es preservado bajo operaciones elementales
+		de matrices?
+		
+		\item Si $V$ es un $F-$espacio vectorial, demuestre que $W \subseteq V$
+		es subespacio de $V$ si y sólo si 
+		\begin{itemize}
+			\item $W \neq \emptyset$
+			\item $(\forall x, y \in W)$ $(\forall \lambda \in F)$: 
+			$\lambda x + y \in W$
+		\end{itemize} 
+		
+		\item que te demuestren que $M(A)$ es un segmento inicial de los naturales
+		(como lo pones en la tarea de abajo).
+		
+		\item Sea $C$ una colección l.d.. Se define el spark como
+		... demuestra que si
+		entonces es la única con la propiedad.
+		Pista: la función $|| \cdot ||_{0}$ desigualdad triangular.
+		
+		\item Que completen la fórmula $dim(W + V)$. Que la usen para
+		demostrar que dos subespacios de $\IR^{3}$ tienen suma directa, y que
+		su suma es todo el espacio.
+	\end{itemize}
+	
+	\newpage
+
+
+
+
+ 
+\section{Rango y rango Kruskal de una matriz: Tarea 1.1}
+\begin{flushright}
+	\textbf{Amélie Bernès, Primavera 2025.}
+\end{flushright}
+
+
+En tu curso de teoría de ecuaciones ya trataste con el concepto de 
+``rango'' de una matriz. A continuación, damos una posible definición.
+
+\begin{defi} (c.f. \cite{rank})
+	Si $A \in M_{m \times n}(\IR)$, el \textbf{rango} de $A$ 
+	(denotado como $rank(A)$)
+	es
+	la mayor cantidad de columnas linealmente independientes de $A$.
+\end{defi}
+
+Si por $A_{j}$ denotamos al $j-$ésimo vector columna de $A$,
+\begin{equation}
+	\label{eq: matriz A con columnas}
+	A = [A_{1} | A_{2} | A_{n} | \cdots | A_{n}], \hspace{0.2cm}
+	A_{j} \in \IR^{m},
+\end{equation}
+para calcular el rango de la matriz $A$, se busca extraer un subconjunto linealmente
+independiente de 
+\[
+Col(A) = \{ A_{1}, \ldots , A_{n} \} \subseteq \IR^{m}
+\]
+de cardinalidad máxima. Entonces, $rank(A) \in \IN$ es tal que 
+\begin{itemize}
+	\item existe un subconjunto de $Col(A)$ de cardinalidad $rank(A)$ que es
+	linealmente independiente, y 
+	\item todo subconjunto de $Col(A)$ de cardinalidad mayor a $rank(A)$ 
+	es linealmente dependiente.
+\end{itemize}
+
+
+
+\begin{defi}
+	(c.f. \cite{highDimDA}, p. 49)
+	Si $A \in M_{m \times n}(\IR)$, el \textbf{rango Kruskal} de $A$ 
+	(denotado como $krank(A)$)
+	es el mayor número
+	$r \in \IN$ tal que \textit{todo} subconjunto de $r$ 
+	columnas de $A$ es linealmente independiente.
+\end{defi}
+O sea, para calcular el rango Kruskal de la matriz
+\eqref{eq: matriz A con columnas}, debes considerar al subconjunto de los naturales
+\[
+M(A) = \{ r \in \IN \cup \{0\} : \hspace{0.15cm} \textit{ todo subconjunto de } Col(A) \textit{ de
+r elementos es l.i..} \}
+\]
+y calcular su máximo;
+\[
+krank(A) = max (M(A)).
+\]
+
+Nota que $M(A)$ es un conjunto de números naturales consecutivos;
+\[
+M(A) = \{ 0, 1, \ldots, krank(A) \}.
+\]
+\begin{prob}
+Si 
+\[
+A = \begin{pmatrix}
+	1 & 0 & 0 \\
+	2 & 1 & 2 \\
+	3 & 2 & 4
+\end{pmatrix},
+\]
+calcula $rank(A)$ y $krank(A)$.	
+\end{prob}
+\textbf{Solución:}
+Sean $A_{1}, A_{2}, A_{3}$ las columnas de $A$.
+Claro que 
+\begin{equation}
+		\label{eq: A2 multiplo A3}
+		A_{3} = 2 A_{2}.
+\end{equation}
+\begin{itemize}
+	\item Por \eqref{eq: A2 multiplo A3}, el rango de $A$ no puede ser $3$
+	(el único subconjunto de $Col(A)$ de tres elementos contiene a $A_{2}$
+	y $A_{3}$). Como $A_{1}$ y $A_{2}$ son l.i., entonces 
+	\[
+	rank(A) = 2.
+	\]
+	\item Por \eqref{eq: A2 multiplo A3}, 
+	\[
+	krank(A) = 1,
+	\]
+	pues
+	sí hay singuletes 
+	de columnas l.i., pero hay un conjunto de dos columnas l.d..
+\end{itemize}
+
+\begin{prob}
+Demuestra que, si $A \in M_{m \times n}(\IR)$ es una
+matriz cualquiera, entonces
+\[
+0 \leq krank(A) \leq rank(A).
+\]	
+\end{prob}
+\textbf{Solución:} Si $r = krank(A)$, entonces todo subconjunto de $Col(A)$
+de cardinalidad $r$ es l.i., luego, un l.i. de cardinalidad maximal no puede tener 
+menos de $r$ elementos.
+\begin{defi}
+	Si $x = (x_{k})_{k=1}^{n} \in \IR^{n}$ y 
+	\[
+	sop(x) = \{ j \in \{ 1, \ldots , n \} : \hspace{0.2cm} x(j) \neq 0 \},
+	\]
+	se define la \textbf{norma cero} de $x$ como
+	\begin{equation}
+		\label{eq: norma cero}
+	||x||_{0} := | sop (x) |.
+	\end{equation}
+\end{defi}
+Entonces, la norma cero de un vector es la cantidad de entradas no cero de este.
+A pesar del nombre, la expresión \eqref{eq: norma cero} no define una norma
+en $\IR^{n}$ (no se cumple la desigualdad triangluar). 
+\begin{prob}
+	\label{prob: 3 de Kruskal}
+Demuestra que, para $A \in M_{m \times n}(\IR)$, son equivalentes
+\begin{enumerate}
+	\item $krank(A) \geq k$
+	\item El único vector $x \in \IR^{n}$ tal que $Ax = 0$ y $||x||_{0} \leq k$ es
+	el vector cero. 
+\end{enumerate}
+Sugerencia: Utiliza la ecuación
+
+\begin{equation}
+	\label{eq: Ax comb lineal de columnas}
+	Ax = x_{1} A_{1} + \ldots + x_{n} A_{n} \in \IR^{m}.
+\end{equation}
+
+	
+\end{prob}
+\textbf{Solución:} 
+	
+	Claro que $krank(A) \geq k$ si y sólo si todo subconjunto
+	de $Col(A)$ de $k$ elementos es l.i.. (\hlgray{poner en el examen?})
+	\begin{itemize}
+	\item [$\Rightarrow$)]
+	\TODO{pon aparte el caso k igual a cero?}
+	Supongamos que existe $x = (x_{k})_{k=0}^{n-1}$ un vector
+	no cero tal que $Ax = 0$ y $||x||_{0} = l \leq k$. Sin pérdida de
+	generalidad, digamos que 
+	\[
+	x = (x_{1}, \ldots , x_{l}, 0, \ldots , 0),
+	\]
+	con $x_{1}, \ldots, x_{l} \neq 0$.
+	Usando el que $Ax = 0$ y la relación \eqref{eq: Ax comb lineal de columnas},
+	se tiene que
+	\[
+	0 = Ax = x_{1} A_{1} + \ldots + x_{l} A_{l}, 
+	\hspace{0.2cm} x_{1}, \ldots, x_{l} \neq 0;
+	\]
+	esto contradice el que $\{ A_{1}, \ldots , A_{l} \}$ sea l.i..
+	
+	\item[$\Leftarrow$)] Mostremos que todo subconjunto de $k$
+	columnas de $A$ es l.i.. Para simplificar la notación, tomemos a 
+	$A_{1}, \ldots , A_{k}$. Sean $x_{1}, \ldots , x_{k}$ escalares 
+	tales que
+	\[
+	0 = x_{1} A_{1} + \ldots + x_{k} A_{k}.
+	\]
+	Si definimos al vector 
+	\[
+	x = (x_{1}, \ldots , x_{k}, 0, \ldots , 0) \in \IR^{n},
+	\]
+	por la ecuación anterior tenemos que $x$ es solución de
+	la ecuación $Ax = 0$. Además, $|| x ||_{0} \leq k$, pues las únicas
+	entradas de $x$ que pueden no ser cero son $x{1}, \ldots , x_{k}$.
+	Así, por hipótesis, $x$ es el vector cero, luego, 
+	$x_{1} = \cdots = x_{k} = 0$. De esto concluimos que 
+	$\{A_{1}, \ldots , A_{k}\}$ es l.i..
+\end{itemize}
+
+
+\vspace{1cm}
+
+\[
+\diamond \diamond \diamond
+\]
+
+\vspace{1cm}
+
+La equivalencia establecida en el Problema 
+\ref{prob: 3 de Kruskal} se usa para determinar unicidad de soluciones
+en problemas de optimización del tipo
+
+\begin{align*}
+	\textit{minimizar} & \hspace{0.3cm} || x ||_{0}, \\
+	\textit{donde} & \hspace{0.3cm} Ax = y.
+\end{align*}
+Véase, por ejemplo, \cite{highDimDA}, Teorema 2.6, p. 49.
+
+{\let\clearpage\relax \printbibliography}
+
+
+\newpage
+
+\section{Tarea 1.2}
+\begin{flushright}
+	\textbf{Amélie Bernès, Primavera 2025.}
+\end{flushright}
+
+
+\begin{prob}
+	Sean $X \neq \emptyset$ un conjunto no vacío, $F$ un campo. 
+	Considere al
+	$F-$espacio vectorial 
+	$F^X$ de funciones de $X$ en $F$ (como se definió en clase).
+	Seleccione un punto $x_{0} \in X$ y defina a $W$
+	como el conjunto de funciones de $X$ en $F$ que mapean el punto
+	$x_{0}$ al cero del campo, es decir, 
+	\[
+	 W = \{ f \in F^X : \hspace{0.2cm} f(x_{0}) = 0 \} \subseteq F^X.
+	\]
+	Demuestra que $W$ es subespacio de $F^X$.
+\end{prob}
+
+
+\begin{prob}
+	Considere al $\IR-$espacio vectorial $\IR^{3}$.
+	Si
+	\[
+	 X = \{ v_{1}, v_{2}, v_{3} \}, 
+	\]
+	donde
+	\[
+	v_{1} = (1, 1, 1), v_{2} = (0, 1, -1), v_{3} = (1, 0, 2),
+	\]
+	demuestra que el vector 
+	\[
+	u = (4, 2, 1) \in \IR^{3}
+	\]
+	\textbf{no} es elemento del generado de $X$.
+\end{prob}
+
+\end{document}
